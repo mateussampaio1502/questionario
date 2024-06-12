@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulário</title>
+</head>
+<body>
+    <header>
+        <h1>ANÁLISE DE GRUPO</h1>
+    </header>
+    <div class="campo">
+        <p>Nesta seção estaremos coletando alguns dados cadastrais para que possamos identificar as respostas no futuro, não se preocupe, nenhum dado sensível será questionado e mesmo os dados aqui solicitados serão protegidos e guardados para qualquer um de fora da equipe.</p>
+        <p id="obg">* Indica uma pergunta obrigatória</p>
+    </div>
+    <div class="campo" id="p1">
+        <p class="required">Em qual cidade você Reside?</p>
+        <select name="cidade" id="cidade">
+            <option value="" selected disabled>Selecione uma cidade</option>
+            <option value="cabaceiras">Cabaceiras do Paraguaçu</option>
+            <option value="cachoeira">Cachoeira</option>
+            <option value="cruz_das_almas">Cruz das Almas</option>
+            <option value="dom_macedo_costa">Dom Macedo Costa</option>
+            <option value="governador_mangabeira">Governador Mangabeira</option>
+            <option value="maragogipe">Maragogipe</option>
+            <option value="muniz_ferreira">Muniz Ferreira</option>
+            <option value="muritiba">Muritiba</option>
+            <option value="nazare">Nazaré</option>
+            <option value="santo_amaro">Santo Amaro</option>
+            <option value="santo_antonio">Santo Antônio de Jesus</option>
+            <option value="sao_felipe">São Felipe</option>
+            <option value="sao_felix">São Félix</option>
+            <option value="sao_francisco_conde">São Francisco do Conde</option>
+            <option value="sao_francisco_passe">São Francisco do Passé</option>
+            <option value="sapeacu">Sapeaçu</option>
+            <option value="saubara">Saubara</option>
+            <option value="varzedo">Varzedo</option>
+            <option value="outro">Outro</option>
+        </select>
+    </div>
+    <div class="campo" id="p2">
+        <p class="required">A qual subgrupo amostral você e/ou seu grupo de convívio pertencem?</p>
+        <select name="cidade" id="cidade">
+        <option value="" selected disabled>Selecione seu grupo</option>
+        <option value="solteiro_A">Solteiro com emprego presencial</option>
+        <option value="solteiro_B">Solteiro com emprego home office</option>
+        <option value="solteiro_C">Solteiro aposentado</option>
+        <option value="casal_A">Casal sem filhos</option>
+        <option value="casal_B">Casal aposentado</option>
+        <option value="casal_C">Casal com filhos</option>
+        <option value="solteiro_D">Mãe ou pai solteiros</option>
+        <option value="residencia_estudantil">Residência estudantil</option>
+        <option value="outro">Outro</option>
+        </select>
+    </div>
+    <div class="campo">
+        <p>Informe seu nome e informação para contato (email ou número de telefone) caso concorde em ser consultado sobre suas respostas (Isso só será feito caso hajam dúvidas acerca de algumas das respostas fornecidas).</p>
+        <textarea name="text" id="text" rows="1"></textarea>
+    </div>
+    <div class="nav">
+        <button>
+            <a href="etapa0.html" rel="previous">Voltar</a>
+        </button>
+        <button>
+            <a href="#" rel="next">Próximo</a>
+        </button>
+    </div>
+    <footer>
+        <p>Mateus Sampaio &reg;</p>
+    </footer>
+</body>
+</html>
