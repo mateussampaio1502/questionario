@@ -34,8 +34,8 @@ div.campo {
     margin: auto;
     margin-top: 10px;
     padding: 5px;
-    overflow: auto;
     border-radius: 10px;
+    overflow: auto;
     background-color: var(--cor-perguntas);
     color: var(--cor-texto);
     text-align: justify;
@@ -98,7 +98,7 @@ div.campo > table  th, td {
     text-align: center;
 }
 
-div.campo > button#addbutton {
+div.campo > button.add_remove {
     padding: 5px;
     border: 0.1px solid var(--cor-destaque);
     border-radius: 10px;
@@ -107,7 +107,7 @@ div.campo > button#addbutton {
     cursor: pointer;
 }
 
-div.campo > button#addbutton:hover {
+div.campo > button.add_remove:hover {
     background-color: var(--cor-campo-ativo);
     color: var(--cor-destaque);
 }

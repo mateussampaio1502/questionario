@@ -15,6 +15,7 @@
         <p id="obg">* Indica uma pergunta obrigatória.</p>
     </div>
     <div class="campo">
+        <p class="required">Preencha, de acordo com a quantidade membros de seu grupo residencial, qual horário é esperado que cada pessoa esteja em casa durante um dia útil comum. Caso a rotina seja variável assinale de acordo com um valor médio ou mais provável.</p>
         <table id="pessoas">
             <thead>
                 <tr>
@@ -75,7 +76,8 @@
                 </tr>
             </tbody>
         </table>
-        <button id="addbutton" onclick="addmember()">Adicionar Membro</button>
+        <button class="add_remove" id="addbutton" onclick="addmember()">Adicionar Membro</button>
+        <button class="add_remove" id="removebutton" onclick="removemember()">Remover Membro</button>
     </div>
     <div class="nav">
         <button>
@@ -108,7 +110,19 @@
                 checkbox.id = `membro${c}[${i}]`
                 cell.appendChild(checkbox);
             }
-        }  
+        }
+
+        function removemember(){
+            var tbody = document.getElementById("tbody_pessoas")
+            var length = tbody.rows.length
+            var removebutton = document.getElementById("removebutton")
+
+            if (length > 1) {
+                tbody.deleteRow(length - 1)
+            } else {
+                alert('Não há membros para remover!')
+            }
+        }
     </script>
 </body>
 </html>
