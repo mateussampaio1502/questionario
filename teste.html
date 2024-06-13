@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulário</title>
+</head>
+<body>
+    <header>
+        <h1>Ocupação da Residência</h1>
+    </header>
+    <div class="campo">
+        <h2>Dias de Semana</h2>
+        <table>
+            <tr>
+                <th>Membro</th>
+                <th>00h</th>
+                <th>01h</th>
+                <!-- Adicione outras colunas até 23h -->
+                <th>23h</th>
+            </tr>
+            <tr>
+                <td>Membro 1</td>
+                <td><input type="checkbox" name="membro1_00h"></td>
+                <td><input type="checkbox" name="membro1_01h"></td>
+                <!-- Adicione outras colunas até 23h -->
+                <td><input type="checkbox" name="membro1_23h"></td>
+            </tr>
+            <tr>
+                <td>Membro 2</td>
+                <td><input type="checkbox" name="membro2_00h"></td>
+                <td><input type="checkbox" name="membro2_01h"></td>
+                <!-- Adicione outras colunas até 23h -->
+                <td><input type="checkbox" name="membro2_23h"></td>
+            </tr>
+            <!-- Adicione outras linhas para cada membro da família -->
+        </table>
+    </div>
+
+    <div class="campo">
+        <h2>Finais de Semana/Feriados</h2>
+        <table>
+            <tr>
+                <th>Membro</th>
+                <th>00h</th>
+                <th>01h</th>
+                <!-- Adicione outras colunas até 23h -->
+                <th>23h</th>
+            </tr>
+            <tr>
+                <td>Membro 1</td>
+                <td><input type="checkbox" name="membro1_fds_00h"></td>
+                <td><input type="checkbox" name="membro1_fds_01h"></td>
+                <!-- Adicione outras colunas até 23h -->
+                <td><input type="checkbox" name="membro1_fds_23h"></td>
+            </tr>
+            <tr>
+                <td>Membro 2</td>
+                <td><input type="checkbox" name="membro2_fds_00h"></td>
+                <td><input type="checkbox" name="membro2_fds_01h"></td>
+                <!-- Adicione outras colunas até 23h -->
+                <td><input type="checkbox" name="membro2_fds_23h"></td>
+            </tr>
+            <!-- Adicione outras linhas para cada membro da família -->
+        </table>
+    </div>
+
+    <div class="nav">
+        <button><a href="#" rel="next">Próximo</a></button>
+        <button><a href="etapa1.html" rel="previous">Voltar</a></button>
+    </div>
+
+    <footer>
+        <p>Mateus Sampaio &reg;</p>
+    </footer>
+</body>
+</html>

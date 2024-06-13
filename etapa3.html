@@ -8,77 +8,107 @@
 </head>
 <body>
     <header>
-        <h1>ANÁLISE DE EFICIÊNCIA ENERGÉTICA</h1>
+        <h1>ANÁLISE OCUPACIONAL</h1>
     </header>
     <div class="campo">
-        <p>Nesta etapa, estamos buscando entender o nível de eficiência energética da rede e dos dispositivos ligados nela.</p>
-        <p id="obg">* Indica uma pergunta obrigatória</p>
+        <p>Nesta etapa, queremos descobrir quais membros do grupo residencial estão presentes em cada hora, na casa. Por este ser um dado com variabilidade elevada, solicitamos que você preencha de acordo o valor médio ou mais provável para o membro em questão. Serão consultadas as faixas de ocupação horária em dias normais e fim de semana/feriados.</p>
+        <p id="obg">* Indica uma pergunta obrigatória.</p>
     </div>
     <div class="campo">
-        <p class="required">Considerando os parâmetros fornecidos a abaixo, avalie o nível de qualidade de seus eletrodoméstico no que diz respeito a tempo de uso e funcionamento.</p>
-        <ul type="none">
-            <li>1) Eficiência dos aparelhos eletrodomésticos.</li> 
-            <li>A - Os equipamentos apresentam pouco tempo de uso e funcionam satisfatoriamente.</li> 
-            <li>B - Os equipamentos apresentam tempo considerável de uso, mas funcionam satisfatoriamente.</li> 
-            <li>C - Os equipamentos apresentam pouco tempo de uso, mas apresentam algumas falhas mecânicas e/ou eletrônicas.</li>
-            <li>D - Os equipamentos apresentam tempo considerável de uso e apresentam falhas mecânicas e/ou eletrônicas ou os equipamentos excederam sua vida útil.</li> <br>
-        </ul>
-        <ul type="none">
-            <li>Das falhas mecânicas: </li>
-            <li>a) Ruídos anormais durante o funcionamento do equipamento.</li>
-            <li>b) Vazamentos de água, óleo ou outros fluidos.</li> 
-            <li>c) Problemas de vedação que causam escape de vapor ou ar.</li> 
-            <li>d) Dificuldades na abertura ou fechamento de compartimentos.</li> 
-            <li>e) Quebras visíveis em peças estruturais, como carcaças, portas, alças, etc.</li> 
-            <li>f) Desgaste excessivo em componentes móveis, como rolamentos, engrenagens, etc.</li> <br>
-        </ul>
-        <ul type="none">
-            <li>Das falhas elétricas:</li> 
-            <li>a) Desligamentos repentinos ou intermitentes do equipamento.</li> 
-            <li>b) Falhas no display ou nos controles digitais, como botões que não respondem ou mostradores com informações incorretas.</li> 
-            <li>c) Erros de funcionamento ao selecionar modos ou configurações específicas.</li> 
-            <li>d) Problemas de aquecimento ou superaquecimento de componentes eletrônicos.</li> 
-            <li>e) Curto circuitos evidentes, faíscas ou cheiro de queimado.</li> 
-            <li>f) Interferências na conexão com outros dispositivos, como falhas de comunicação em sistemas integrados.</li> <br>
-        </ul>
-        <ul type="none">
-            <li>Detalhamento do tempo de uso (INSTRUÇÃO NORMATIVA SRF Nº 162, DE 31 DE DEZEMBRO DE 1998): </li>
-            <li>a) Até 5 anos: Pouco tempo de uso.</li> 
-            <li>b) Até 10 anos: Tempo considerável de uso.</li> 
-            <li>c) Acima de 10 anos: excedeu a vida útil.</li> <br>
-        </ul>
-        <input type="radio" name="option" id="nivel-a">
-        <label for="nivel-a">Nível  A</label> <br>
-        <input type="radio" name="option" id="nivel-b">
-        <label for="nivel-b">Nível B</label> <br>
-        <input type="radio" name="option" id="nivel-c">
-        <label for="nivel-c">Nível C</label> <br>
-        <input type="radio" name="option" id="nivel-d">
-        <label for="nivel-d">Nível D</label> <br>
-    </div>
-    <div class="campo">
-        <p class="required">considerando o parâmetro abaixo, avalie sua residência no que diz respeito à periodicidade de manutenções.</p>
-        <ul type="none">
-            <li>Eficiência das instalações elétricas.</li>
-            <li>No que diz respeito à periodicidade das manutenções de uma instalação elétrica, esta é personalizada e varia de acordo com as condições climáticas, a necessidade de potência e a complexidade das instalações (NBR5410, p. 168, 2004). Quanto mais adversas as condições e maior a necessidade de carga, menor o período entre manutenções, porém quanto mais complexos os sistemas, maior deve ser o período. Além disso, esse valor de periodicidade, deve ser estimado baseado nas prescrições da norma.</li>
-            <li>A - São feitas manutenções periódicas baseadas numa periodicidade determinada por um profissional.</li>
-            <li>B - Não são feitas manutenções, a menos que seja identificado algum problema sério nas instalações.</li>
-        </ul>
-        <input type="radio" name="option" id="nivel-a">
-        <label for="nivel-a">Nível  A</label> <br>
-        <input type="radio" name="option" id="nivel-b">
-        <label for="nivel-b">Nível B</label> <br>
+        <table id="pessoas">
+            <thead>
+                <tr>
+                    <th>Membro</th>
+                    <th>0h</th>
+                    <th>1h</th>
+                    <th>2h</th>
+                    <th>3h</th>
+                    <th>4h</th>
+                    <th>5h</th>
+                    <th>6h</th>
+                    <th>7h</th>
+                    <th>8h</th>
+                    <th>9h</th>
+                    <th>10h</th>
+                    <th>11h</th>
+                    <th>12h</th>
+                    <th>13h</th>
+                    <th>14h</th>
+                    <th>15h</th>
+                    <th>16h</th>
+                    <th>17h</th>
+                    <th>18h</th>
+                    <th>19h</th>
+                    <th>20h</th>
+                    <th>21h</th>
+                    <th>22h</th>
+                    <th>23h</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_pessoas">
+                <tr>
+                    <th>Membro 1</th>
+                    <td><input type="checkbox" name="membro1[0h]" id="membro1[0h]"></td>
+                    <td><input type="checkbox" name="membro1[1h]" id="membro1[1h]"></td>
+                    <td><input type="checkbox" name="membro1[2h]" id="membro1[2h]"></td>
+                    <td><input type="checkbox" name="membro1[3h]" id="membro1[3h]"></td>
+                    <td><input type="checkbox" name="membro1[4h]" id="membro1[4h]"></td>
+                    <td><input type="checkbox" name="membro1[5h]" id="membro1[5h]"></td>
+                    <td><input type="checkbox" name="membro1[6h]" id="membro1[6h]"></td>
+                    <td><input type="checkbox" name="membro1[7h]" id="membro1[7h]"></td>
+                    <td><input type="checkbox" name="membro1[8h]" id="membro1[8h]"></td>
+                    <td><input type="checkbox" name="membro1[9h]" id="membro1[9h]"></td>
+                    <td><input type="checkbox" name="membro1[10h]" id="membro1[10h]"></td>
+                    <td><input type="checkbox" name="membro1[11h]" id="membro1[11h]"></td>
+                    <td><input type="checkbox" name="membro1[12h]" id="membro1[12h]"></td>
+                    <td><input type="checkbox" name="membro1[13h]" id="membro1[13h]"></td>
+                    <td><input type="checkbox" name="membro1[14h]" id="membro1[14h]"></td>
+                    <td><input type="checkbox" name="membro1[15h]" id="membro1[15h]"></td>
+                    <td><input type="checkbox" name="membro1[16h]" id="membro1[16h]"></td>
+                    <td><input type="checkbox" name="membro1[17h]" id="membro1[17h]"></td>
+                    <td><input type="checkbox" name="membro1[18h]" id="membro1[18h]"></td>
+                    <td><input type="checkbox" name="membro1[19h]" id="membro1[19h]"></td>
+                    <td><input type="checkbox" name="membro1[20h]" id="membro1[20h]"></td>
+                    <td><input type="checkbox" name="membro1[21h]" id="membro1[21h]"></td>
+                    <td><input type="checkbox" name="membro1[22h]" id="membro1[22h]"></td>
+                    <td><input type="checkbox" name="membro1[23h]" id="membro1[23h]"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="addbutton" onclick="addmember()">Adicionar Membro</button>
     </div>
     <div class="nav">
         <button>
-            <a href="#">Voltar</a>
+            <a href="etapa2.html" rel="previous">Voltar</a>
         </button>
         <button>
-            <a href="#">Próximo</a>
+            <a href="#" rel="next">Próximo</a>
         </button>
     </div>
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
+
+    <script>
+        var c = 1
+
+        function addmember(){
+            var tbody = document.getElementById("tbody_pessoas")
+            var newrow = tbody.insertRow();
+            c++
+            var member = document.createElement("th")
+            member.textContent = `Membro ${c}`
+            newrow.appendChild(member)
+
+            for (let i=1; i<=24; i++){
+                let cell = newrow.insertCell()
+                let checkbox = document.createElement("input")
+                checkbox.type = "checkbox"
+                checkbox.name = `membro${c}[${i}]`
+                checkbox.id = `membro${c}[${i}]`
+                cell.appendChild(checkbox);
+            }
+        }  
+    </script>
 </body>
 </html>

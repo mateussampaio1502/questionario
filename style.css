@@ -34,6 +34,7 @@ div.campo {
     margin: auto;
     margin-top: 10px;
     padding: 5px;
+    overflow: auto;
     border-radius: 10px;
     background-color: var(--cor-perguntas);
     color: var(--cor-texto);
@@ -81,6 +82,34 @@ div.campo li {
     margin: 0 5px;
     padding: 5px 0;
     text-align: justify;
+}
+
+div.campo table {
+    width: 80%;
+    margin: 5px 0;
+    border-collapse: collapse;
+}
+
+div.campo > table  th, td {
+    min-width: 60px;
+    padding: 0px 5px;
+    border: 0.5px solid var(--cor-destaque);
+    font-size: 12px;
+    text-align: center;
+}
+
+div.campo > button#addbutton {
+    padding: 5px;
+    border: 0.1px solid var(--cor-destaque);
+    border-radius: 10px;
+    background-color: var(--cor-destaque);
+    color: var(--cor-perguntas);
+    cursor: pointer;
+}
+
+div.campo > button#addbutton:hover {
+    background-color: var(--cor-campo-ativo);
+    color: var(--cor-destaque);
 }
 
 div.nav {
