@@ -8,71 +8,223 @@
 </head>
 <body>
     <header>
-        <h1>Ocupação da Residência</h1>
+        <h1>ANÁLISE OCUPACIONAL</h1>
     </header>
     <div class="campo">
-        <h2>Dias de Semana</h2>
-        <table>
-            <tr>
-                <th>Membro</th>
-                <th>00h</th>
-                <th>01h</th>
-                <!-- Adicione outras colunas até 23h -->
-                <th>23h</th>
-            </tr>
-            <tr>
-                <td>Membro 1</td>
-                <td><input type="checkbox" name="membro1_00h"></td>
-                <td><input type="checkbox" name="membro1_01h"></td>
-                <!-- Adicione outras colunas até 23h -->
-                <td><input type="checkbox" name="membro1_23h"></td>
-            </tr>
-            <tr>
-                <td>Membro 2</td>
-                <td><input type="checkbox" name="membro2_00h"></td>
-                <td><input type="checkbox" name="membro2_01h"></td>
-                <!-- Adicione outras colunas até 23h -->
-                <td><input type="checkbox" name="membro2_23h"></td>
-            </tr>
-            <!-- Adicione outras linhas para cada membro da família -->
-        </table>
+        <p>Nesta etapa, queremos descobrir quais membros do grupo residencial estão presentes em cada hora, na casa. Por este ser um dado com variabilidade elevada, solicitamos que você preencha de acordo o valor médio ou mais provável para o membro em questão. Serão consultadas as faixas de ocupação horária em dias normais e fim de semana/feriados.</p>
+        <p id="obg">* Indica uma pergunta obrigatória.</p>
     </div>
-
     <div class="campo">
-        <h2>Finais de Semana/Feriados</h2>
-        <table>
-            <tr>
-                <th>Membro</th>
-                <th>00h</th>
-                <th>01h</th>
-                <!-- Adicione outras colunas até 23h -->
-                <th>23h</th>
-            </tr>
-            <tr>
-                <td>Membro 1</td>
-                <td><input type="checkbox" name="membro1_fds_00h"></td>
-                <td><input type="checkbox" name="membro1_fds_01h"></td>
-                <!-- Adicione outras colunas até 23h -->
-                <td><input type="checkbox" name="membro1_fds_23h"></td>
-            </tr>
-            <tr>
-                <td>Membro 2</td>
-                <td><input type="checkbox" name="membro2_fds_00h"></td>
-                <td><input type="checkbox" name="membro2_fds_01h"></td>
-                <!-- Adicione outras colunas até 23h -->
-                <td><input type="checkbox" name="membro2_fds_23h"></td>
-            </tr>
-            <!-- Adicione outras linhas para cada membro da família -->
-        </table>
+        <p class="required">Preencha, de acordo com a quantidade membros de seu grupo residencial, qual horário é esperado que cada pessoa esteja em casa durante um dia útil comum. Caso a rotina seja variável assinale de acordo com um valor médio ou mais provável.</p>
+        <div class="table">
+            <table id="pessoas">
+                <thead>
+                    <tr>
+                        <th>Membro</th>
+                        <th>0h</th>
+                        <th>1h</th>
+                        <th>2h</th>
+                        <th>3h</th>
+                        <th>4h</th>
+                        <th>5h</th>
+                        <th>6h</th>
+                        <th>7h</th>
+                        <th>8h</th>
+                        <th>9h</th>
+                        <th>10h</th>
+                        <th>11h</th>
+                        <th>12h</th>
+                        <th>13h</th>
+                        <th>14h</th>
+                        <th>15h</th>
+                        <th>16h</th>
+                        <th>17h</th>
+                        <th>18h</th>
+                        <th>19h</th>
+                        <th>20h</th>
+                        <th>21h</th>
+                        <th>22h</th>
+                        <th>23h</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_pessoas">
+                    <tr>
+                        <th>Membro 1</th>
+                        <td><input type="checkbox" name="membro1[0h]" id="membro1[0h]"></td>
+                        <td><input type="checkbox" name="membro1[1h]" id="membro1[1h]"></td>
+                        <td><input type="checkbox" name="membro1[2h]" id="membro1[2h]"></td>
+                        <td><input type="checkbox" name="membro1[3h]" id="membro1[3h]"></td>
+                        <td><input type="checkbox" name="membro1[4h]" id="membro1[4h]"></td>
+                        <td><input type="checkbox" name="membro1[5h]" id="membro1[5h]"></td>
+                        <td><input type="checkbox" name="membro1[6h]" id="membro1[6h]"></td>
+                        <td><input type="checkbox" name="membro1[7h]" id="membro1[7h]"></td>
+                        <td><input type="checkbox" name="membro1[8h]" id="membro1[8h]"></td>
+                        <td><input type="checkbox" name="membro1[9h]" id="membro1[9h]"></td>
+                        <td><input type="checkbox" name="membro1[10h]" id="membro1[10h]"></td>
+                        <td><input type="checkbox" name="membro1[11h]" id="membro1[11h]"></td>
+                        <td><input type="checkbox" name="membro1[12h]" id="membro1[12h]"></td>
+                        <td><input type="checkbox" name="membro1[13h]" id="membro1[13h]"></td>
+                        <td><input type="checkbox" name="membro1[14h]" id="membro1[14h]"></td>
+                        <td><input type="checkbox" name="membro1[15h]" id="membro1[15h]"></td>
+                        <td><input type="checkbox" name="membro1[16h]" id="membro1[16h]"></td>
+                        <td><input type="checkbox" name="membro1[17h]" id="membro1[17h]"></td>
+                        <td><input type="checkbox" name="membro1[18h]" id="membro1[18h]"></td>
+                        <td><input type="checkbox" name="membro1[19h]" id="membro1[19h]"></td>
+                        <td><input type="checkbox" name="membro1[20h]" id="membro1[20h]"></td>
+                        <td><input type="checkbox" name="membro1[21h]" id="membro1[21h]"></td>
+                        <td><input type="checkbox" name="membro1[22h]" id="membro1[22h]"></td>
+                        <td><input type="checkbox" name="membro1[23h]" id="membro1[23h]"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="add_remove" id="addbutton" onclick="addmember()">Adicionar Membro</button>
+        <button class="add_remove" id="removebutton" onclick="removemember()">Remover Membro</button>
     </div>
-
+    <div class="campo">
+        <p class="required">Preencha, de acordo com a quantidade membros de seu grupo residencial, qual horário é esperado que cada pessoa esteja em casa durante um fim de semana ou feriado. Caso a rotina seja variável assinale de acordo com um valor médio ou mais provável.</p>
+        <div class="table">
+            <table id="pessoas_fds">
+                <thead>
+                    <tr>
+                        <th>Membro</th>
+                        <th>0h</th>
+                        <th>1h</th>
+                        <th>2h</th>
+                        <th>3h</th>
+                        <th>4h</th>
+                        <th>5h</th>
+                        <th>6h</th>
+                        <th>7h</th>
+                        <th>8h</th>
+                        <th>9h</th>
+                        <th>10h</th>
+                        <th>11h</th>
+                        <th>12h</th>
+                        <th>13h</th>
+                        <th>14h</th>
+                        <th>15h</th>
+                        <th>16h</th>
+                        <th>17h</th>
+                        <th>18h</th>
+                        <th>19h</th>
+                        <th>20h</th>
+                        <th>21h</th>
+                        <th>22h</th>
+                        <th>23h</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_pessoas_fds">
+                    <tr>
+                        <th>Membro 1</th>
+                        <td><input type="checkbox" name="membro1_fds[0h]" id="membro1_fds[0h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[1h]" id="membro1_fds[1h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[2h]" id="membro1_fds[2h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[3h]" id="membro1_fds[3h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[4h]" id="membro1_fds[4h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[5h]" id="membro1_fds[5h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[6h]" id="membro1_fds[6h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[7h]" id="membro1_fds[7h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[8h]" id="membro1_fds[8h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[9h]" id="membro1_fds[9h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[10h]" id="membro1_fds[10h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[11h]" id="membro1_fds[11h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[12h]" id="membro1_fds[12h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[13h]" id="membro1_fds[13h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[14h]" id="membro1_fds[14h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[15h]" id="membro1_fds[15h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[16h]" id="membro1_fds[16h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[17h]" id="membro1_fds[17h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[18h]" id="membro1_fds[18h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[19h]" id="membro1_fds[19h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[20h]" id="membro1_fds[20h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[21h]" id="membro1_fds[21h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[22h]" id="membro1_fds[22h]"></td>
+                        <td><input type="checkbox" name="membro1_fds[23h]" id="membro1_fds[23h]"></td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
+        <button class="add_remove" id="addbutton" onclick="addmember_fds()">Adicionar Membro</button>
+        <button class="add_remove" id="removebutton" onclick="removemember_fds()">Remover Membro</button>
+    </div>
+    
+    
     <div class="nav">
-        <button><a href="#" rel="next">Próximo</a></button>
-        <button><a href="etapa1.html" rel="previous">Voltar</a></button>
+        <button>
+            <a href="etapa2.html" rel="previous">Voltar</a>
+        </button>
+        <button>
+            <a href="#" rel="next">Próximo</a>
+        </button>
     </div>
-
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
+
+    <script>
+        var c = 1
+
+        function addmember(){
+            var tbody = document.getElementById("tbody_pessoas")
+            var newrow = tbody.insertRow();
+            c++
+            var member = document.createElement("th")
+            member.textContent = `Membro ${c}`
+            newrow.appendChild(member)
+
+            for (let i=1; i<=24; i++){
+                let cell = newrow.insertCell()
+                let checkbox = document.createElement("input")
+                checkbox.type = "checkbox"
+                checkbox.name = `membro${c}[${i}]`
+                checkbox.id = `membro${c}[${i}]`
+                cell.appendChild(checkbox);
+            }
+        }
+
+        function removemember(){
+            var tbody = document.getElementById("tbody_pessoas")
+            var length = tbody.rows.length
+            var removebutton = document.getElementById("removebutton")
+
+            if (length > 1) {
+                tbody.deleteRow(length - 1)
+            } else {
+                alert('Não há membros para remover!')
+            }
+        }
+        var c_fds = 1;
+
+        function addmember_fds(){
+            var tbody = document.getElementById("tbody_pessoas_fds");
+            var newrow = tbody.insertRow();
+            c_fds++;
+            var member = document.createElement("th");
+            member.textContent = `Membro ${c_fds}`;
+            newrow.appendChild(member);
+
+            for (let i = 0; i < 24; i++){
+                let cell = newrow.insertCell();
+                let checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = `membro${c_fds}_fds[${i}h]`;
+                checkbox.id = `membro${c_fds}_fds[${i}h]`;
+                cell.appendChild(checkbox);
+            }
+        }
+
+        function removemember_fds(){
+            var tbody = document.getElementById("tbody_pessoas_fds");
+            var length = tbody.rows.length;
+
+            if (length > 1) {
+                tbody.deleteRow(length - 1);
+                c_fds--;
+            } else {
+                alert('Não há membros para remover!');
+            }
+        }   
+    </script>
 </body>
 </html>
