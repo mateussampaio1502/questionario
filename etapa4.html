@@ -51,7 +51,7 @@
                             <option value="Televisão">Televisão</option>
                             <option value="Ventilador">Ventilador</option>
                         </select>
-                                                <td><input type="checkbox" name="eletro1[0h]" id="eletro1[0h]"></td>
+                        <td><input type="checkbox" name="eletro1[0h]" id="eletro1[0h]"></td>
                         <td><input type="checkbox" name="eletro1[1h]" id="eletro1[1h]"></td>
                         <td><input type="checkbox" name="eletro1[2h]" id="eletro1[2h]"></td>
                         <td><input type="checkbox" name="eletro1[3h]" id="eletro1[3h]"></td>
@@ -100,9 +100,12 @@
             let tbody = document.getElementById("tbody_eletro")
             let newRow = tbody.insertRow();
             let eletroSelect = document.getElementById("eletro")
-            let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text;
+            let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text
+            let index = eletroSelect.selectedIndex
+            if (index==0){
+                alert("Selecione uma opção válida")
+            } else {
             newRow.insertCell().textContent = selectedEletro
-
             for (let i = 0; i < 24; i++){
                 let cell = newRow.insertCell();
                 let check = document.createElement("input")
@@ -110,7 +113,8 @@
                 check.name = `eletro${count}[${i}]`
                 check.id = `eletro${count}[${i}]`
                 cell.appendChild(check)
-            }
+            }}
+
         }
 
         function removeEletro(){
