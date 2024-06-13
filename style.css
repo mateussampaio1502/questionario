@@ -125,6 +125,13 @@ div.campo > div.table {
     overflow: auto;
 }
 
+div.campo input[type="checkbox"] {
+    width: 100%;
+    height: 100%;
+    margin: 5px 0;
+    cursor: pointer;
+}
+
 div.nav {
 text-align: center;
 }
