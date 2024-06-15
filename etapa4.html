@@ -15,7 +15,7 @@
         <p id="obg">* Indica uma pergunta obrigatória</p>
     </div>
     <div class="campo">
-        <p>Considerando os seguintes equipamentos:</p>
+        <p>Considere os seguintes equipamentos (em um dia útil comum):</p>
         <p>Air fryer, ar-condicionado, chapa, chuveiro elétrico, computador, consoles de videogame, forno elétrico, freezer, geladeira de 1 porta, geladeira de duas portas, grelha elétrica, lâmpada fluorescente, lâmpada incandescente, lâmpada LED, liquidificador, modem de wi-fi, televisão e ventilador.</p>
         <div class="table">
             <table>
@@ -30,7 +30,7 @@
                 </thead>
                 <tbody id="tbody_eletro">
                     <td>
-                        <select name="eletro" id="eletro">
+                        <select name="eletro" id="eletro" class="eletro">
                             <option value="" selected disabled>Selecione uma opção</option>
                             <option value="Air fryer">Air fryer</option>
                             <option value="Ar-condicionado">Ar-condicionado</option>
@@ -51,6 +51,7 @@
                             <option value="Televisão">Televisão</option>
                             <option value="Ventilador">Ventilador</option>
                         </select>
+                    </td>
                         <td><input type="checkbox" name="eletro1[0h]" id="eletro1[0h]"></td>
                         <td><input type="checkbox" name="eletro1[1h]" id="eletro1[1h]"></td>
                         <td><input type="checkbox" name="eletro1[2h]" id="eletro1[2h]"></td>
@@ -75,13 +76,123 @@
                         <td><input type="checkbox" name="eletro1[21h]" id="eletro1[21h]"></td>
                         <td><input type="checkbox" name="eletro1[22h]" id="eletro1[22h]"></td>
                         <td><input type="checkbox" name="eletro1[23h]" id="eletro1[23h]"></td>
-                    </td>
                 </tbody>
             </table>
         </div>
         <button class="add_remove" id="addbutton" onclick="addEletro()">Adicionar eletrônico</button>
         <button class="add_remove" id="removebutton" onclick="removeEletro()">Remover eletrônico</button>
     </div>
+    <div class="campo">
+        <p>Considere os seguintes equipamentos (em um fim de semana comum):</p>
+        <p>Air fryer, ar-condicionado, chapa, chuveiro elétrico, computador, consoles de videogame, forno elétrico, freezer, geladeira de 1 porta, geladeira de duas portas, grelha elétrica, lâmpada fluorescente, lâmpada incandescente, lâmpada LED, liquidificador, modem de wi-fi, televisão e ventilador.</p>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Eletrodoméstico</th>
+                        <th>00h</th><th>01h</th><th>02h</th><th>03h</th>
+                        <th>04h</th><th>05h</th><th>06h</th><th>07h</th>
+                        <th>08h</th><th>09h</th><th>10h</th><th>11h</th>
+                        <th>12h</th><th>13h</th><th>14h</th><th>15h</th>
+                        <th>16h</th><th>17h</th><th>18h</th><th>19h</th>
+                        <th>20h</th><th>21h</th><th>22h</th><th>23h</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_eletro_weekend">
+                    <tr>
+                        <td>
+                            <select name="eletro_weekend" id="eletro_weekend" class="eletro">
+                                <option value="" selected disabled>Selecione uma opção</option>
+                                <option value="Air fryer">Air fryer</option>
+                                <option value="Ar-condicionado">Ar-condicionado</option>
+                                <option value="Chapa">Chapa</option>
+                                <option value="Chuveiro elétrico">Chuveiro elétrico</option>
+                                <option value="Computador">Computador</option>
+                                <option value="Consoles de videogame">Consoles de videogame</option>
+                                <option value="Forno elétrico">Forno elétrico</option>
+                                <option value="Freezer">Freezer</option>
+                                <option value="Geladeira de 1 porta">Geladeira de 1 porta</option>
+                                <option value="Geladeira de duas portas">Geladeira de duas portas</option>
+                                <option value="Grelha elétrica">Grelha elétrica</option>
+                                <option value="Lâmpada fluorescente">Lâmpada fluorescente</option>
+                                <option value="Lâmpada incandescente">Lâmpada incandescente</option>
+                                <option value="Lâmpada LED">Lâmpada LED</option>
+                                <option value="Liquidificador">Liquidificador</option>
+                                <option value="Modem de Wi-Fi">Modem de Wi-Fi</option>
+                                <option value="Televisão">Televisão</option>
+                                <option value="Ventilador">Ventilador</option>
+                            </select>
+                        </td>
+                        <td><input type="checkbox" name="eletro_weekend1[0h]" id="eletro_weekend1[0h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[1h]" id="eletro_weekend1[1h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[2h]" id="eletro_weekend1[2h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[3h]" id="eletro_weekend1[3h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[4h]" id="eletro_weekend1[4h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[5h]" id="eletro_weekend1[5h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[6h]" id="eletro_weekend1[6h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[7h]" id="eletro_weekend1[7h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[8h]" id="eletro_weekend1[8h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[9h]" id="eletro_weekend1[9h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[10h]" id="eletro_weekend1[10h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[11h]" id="eletro_weekend1[11h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[12h]" id="eletro_weekend1[12h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[13h]" id="eletro_weekend1[13h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[14h]" id="eletro_weekend1[14h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[15h]" id="eletro_weekend1[15h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[16h]" id="eletro_weekend1[16h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[17h]" id="eletro_weekend1[17h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[18h]" id="eletro_weekend1[18h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[19h]" id="eletro_weekend1[19h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[20h]" id="eletro_weekend1[20h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[21h]" id="eletro_weekend1[21h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[22h]" id="eletro_weekend1[22h]"></td>
+                        <td><input type="checkbox" name="eletro_weekend1[23h]" id="eletro_weekend1[23h]"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="add_remove" id="addbutton" onclick="addEletro_weekend()">Adicionar eletrônico</button>
+        <button class="add_remove" id="removebutton" onclick="removeEletro_weekend()">Remover eletrônico</button>
+    </div>
+
+    <div class="campo">
+        <p class="required">Considerando os seguintes equipamentos (tanto para feriados quanto dias úteis):</p>
+        <p>Carregador de celular, carregador de notebook, secador de cabelo, modelador de cabelo, impressora</p>
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Eletrodoméstico</th>
+                        <th>Quantidade</th>
+                        <th>Tempo de uso</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_eletro_esp">
+                    <tr>
+                        <td>
+                            <select name="eletro_esp" id="eletro_esp" class="eletro">
+                                <option value="" selected disabled>Selecione uma opção</option>
+                                <option value="carregador de celular">Carregador de celular</option>
+                                <option value="carregador de notebook">Carregador de notebook</option>
+                                <option value="impressora">Impressora</option>
+                                <option value="modelador de cabelo">Modelador de cabelo</option>
+                                <option value="secador de cabelo">Secador de cabelo</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="number" name="qtd" id="qtd">
+                        </td>
+                        <td>
+                            <input type="number" name="hora" id="hora">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="add_remove" id="addbutton" onclick="addEletro_esp()">Adicionar eletrônico</button>
+        <button class="add_remove" id="removebutton" onclick="removeEletro_esp()">Remover eletrônico</button>
+    </div>
+    
     <div class="nav">
         <button>
             <a href="etapa3.html" rel="previous">Voltar</a>
@@ -120,6 +231,70 @@
         function removeEletro(){
             var tbody = document.getElementById("tbody_eletro")
             var length = tbody.rows.length
+
+            if (length > 1){
+                tbody.deleteRow(length - 1)
+            } else {
+                alert('Não há eletrodomésticos para remover')
+            }
+        }
+
+        function addEletro_weekend(){
+            count++
+            let tbody = document.getElementById("tbody_eletro_weekend")
+            let newRow = tbody.insertRow();
+            let eletroSelect = document.getElementById("eletro_weekend")
+            let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text
+            let index = eletroSelect.selectedIndex
+            if (index==0){
+                alert("Selecione uma opção válida")
+            } else {
+            newRow.insertCell().textContent = selectedEletro
+            for (let i = 0; i < 24; i++){
+                let cell = newRow.insertCell();
+                let check = document.createElement("input")
+                check.type = "checkbox"
+                check.name = `eletro_weekend${count}[${i}]`
+                check.id = `eletro_weekend${count}[${i}]`
+                cell.appendChild(check)
+            }}
+
+        }
+
+        function removeEletro_weekend(){
+            var tbody = document.getElementById("tbody_eletro_weekend")
+            var length = tbody.rows.length
+
+            if (length > 1){
+                tbody.deleteRow(length - 1)
+            } else {
+                alert('Não há eletrodomésticos para remover')
+            }
+        }
+
+        function addEletro_esp(){
+            let tbody = document.getElementById("tbody_eletro_esp")
+            let eletroSelect = document.getElementById("eletro_esp")
+            let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text
+            let index = eletroSelect.selectedIndex
+            let qtd = Number(document.getElementById("qtd").value)
+            let hora = Number(document.getElementById("hora").value)
+
+            if (index == 0 || qtd <=0 || hora <=0 ){
+                alert('Há algo errado! Verifique os dados e tente novamente.')
+            } else {
+                let newRow = tbody.insertRow()
+                newRow.insertCell().textContent = selectedEletro
+                let qtdCell = newRow.insertCell();
+                qtdCell.textContent = qtd;
+                let horaCell = newRow.insertCell();
+                horaCell.textContent = hora;
+            }
+        }
+
+        function removeEletro_esp(){
+            let tbody = document.getElementById("tbody_eletro_esp")
+            let length = tbody.rows.length
 
             if (length > 1){
                 tbody.deleteRow(length - 1)
