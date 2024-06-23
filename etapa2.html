@@ -14,7 +14,7 @@
         <p>Nesta etapa, estamos buscando entender o nível de eficiência energética da rede e dos dispositivos ligados nela.</p>
         <p id="obg">* Indica uma pergunta obrigatória</p>
     </div>
-    <div class="campo">
+    <div class="campo" id="p4">
         <p class="required">Considerando os parâmetros fornecidos a abaixo, avalie o nível de qualidade de seus eletrodoméstico no que diz respeito a tempo de uso e funcionamento.</p>
         <ul type="none">
             <li>1) Eficiência dos aparelhos eletrodomésticos.</li> 
@@ -56,7 +56,7 @@
         <input type="radio" name="option" id="nivel-d">
         <label for="nivel-d">Nível D</label> <br>
     </div>
-    <div class="campo">
+    <div class="campo" id="p5">
         <p class="required">considerando o parâmetro abaixo, avalie sua residência no que diz respeito à periodicidade de manutenções.</p>
         <ul type="none">
             <li>Eficiência das instalações elétricas.</li>
@@ -71,14 +71,64 @@
     </div>
     <div class="nav">
         <button>
-            <a href="etapa1.html" rel="previous">Voltar</a>
+            <a href="etapa1.html" rel="previous" onclick="salvarDados()">Voltar</a>
         </button>
         <button>
-            <a href="etapa3.html">Próximo</a>
+            <a href="etapa3.html" onclick="salvarDados()">Próximo</a>
         </button>
+        <input type="button" value="Salvar" class="save" onclick="salvarDados()">
     </div>
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
+
+    <script>
+        function salvarDados() {
+            const nivelA = document.getElementById('nivel-a').checked;
+            const nivelB = document.getElementById('nivel-b').checked;
+            const nivelC = document.getElementById('nivel-c').checked;
+            const nivelD = document.getElementById('nivel-d').checked;
+            const nivelA2 = document.getElementById('nivel-A').checked;
+            const nivelB2 = document.getElementById('nivel-B').checked;
+
+            let nivel = '';
+            if (nivelA) nivel = 'A';
+            else if (nivelB) nivel = 'B';
+            else if (nivelC) nivel = 'C';
+            else if (nivelD) nivel = 'D';
+
+            let nivel2 = '';
+            if (nivelA2) nivel2 = 'A';
+            else if (nivelB2) nivel2 = 'B';
+
+            if (nivel && nivel2) {
+                const dados = {
+                    nivel: nivel,
+                    nivel2: nivel2
+                };
+
+                localStorage.setItem('dadosFormulario2', JSON.stringify(dados));
+                alert('Dados salvos com sucesso!');
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        }
+
+        function carregarDados() {
+            const dados = JSON.parse(localStorage.getItem('dadosFormulario2'));
+            if (dados) {
+                if (dados.nivel === 'A') document.getElementById('nivel-a').checked = true;
+                else if (dados.nivel === 'B') document.getElementById('nivel-b').checked = true;
+                else if (dados.nivel === 'C') document.getElementById('nivel-c').checked = true;
+                else if (dados.nivel === 'D') document.getElementById('nivel-d').checked = true;
+
+                if (dados.nivel2 === 'A') document.getElementById('nivel-A').checked = true;
+                else if (dados.nivel2 === 'B') document.getElementById('nivel-B').checked = true;
+            }
+        }
+
+        window.onload = carregarDados;
+    </script>
+
 </body>
 </html>

@@ -58,7 +58,7 @@ div.campo label,input {
     margin: 5px 5px;
 }
 
-div.campo select#cidade{
+div.campo select#cidade, select#subgrupo{
     margin: 0 5px;
     padding: 5px 0;
     border-radius: 5px;
@@ -171,6 +171,20 @@ div.nav button:hover {
 
 div.nav button > a:hover {
     color: var(--cor-destaque);
+}
+
+div.nav input.save{
+    margin: 10px;
+    padding: 5px;
+    border: 0.5px solid var(--cor-destaque);
+    border-radius: 20px;
+    background-color: var(--cor-destaque);
+    color: white;
+    cursor: pointer;
+}
+
+div.nav input.save:hover{
+    background-color: var(--cor-campo-ativo);
 }
 
 div.nav input#fim{

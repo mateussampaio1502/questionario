@@ -41,7 +41,7 @@
     </div>
     <div class="campo" id="p2">
         <p class="required">A qual subgrupo amostral você e/ou seu grupo de convívio pertencem?</p>
-        <select name="cidade" id="cidade">
+        <select name="subgrupo" id="subgrupo">
         <option value="" selected disabled>Selecione seu grupo</option>
         <option value="solteiro_A">Solteiro com emprego presencial</option>
         <option value="solteiro_B">Solteiro com emprego home office</option>
@@ -54,7 +54,7 @@
         <option value="outro">Outro</option>
         </select>
     </div>
-    <div class="campo">
+    <div class="campo" id="p3">
         <p>Informe seu nome e informação para contato (email ou número de telefone) caso concorde em ser consultado sobre suas respostas (Isso só será feito caso hajam dúvidas acerca de algumas das respostas fornecidas).</p>
         <textarea name="text" id="text" rows="1"></textarea>
     </div>
@@ -63,11 +63,47 @@
             <a href="etapa0.html" rel="previous">Voltar</a>
         </button>
         <button>
-            <a href="etapa2.html" rel="next">Próximo</a>
+            <a href="etapa2.html" rel="next" onclick="salvarDados()">Próximo</a>
         </button>
+        <input type="button" value="Salvar" class="save" onclick="salvarDados()">
     </div>
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
+    <script src="script.js"></script>
 </body>
+
+<script>
+    function salvarDados() {
+    const cidade = document.getElementById('cidade').value;
+    const subgrupo = document.getElementById('subgrupo').value;
+    const contato = document.getElementById('text').value;
+
+    if (cidade && subgrupo && contato) {
+        const dados = {
+            cidade: cidade,
+            subgrupo: subgrupo,
+            contato: contato
+        };
+
+        localStorage.setItem('dadosFormulario', JSON.stringify(dados));
+        alert('Dados salvos com sucesso!');
+    } else {
+        alert('Por favor, preencha todos os campos.');
+    }
+}
+
+function carregarDados() {
+    const dados = JSON.parse(localStorage.getItem('dadosFormulario'));
+    if (dados) {
+        document.getElementById('cidade').value = dados.cidade;
+        document.getElementById('subgrupo').value = dados.subgrupo;
+        document.getElementById('text').value = dados.contato;
+    }
+}
+
+window.onload = carregarDados;
+
+</script>
+
 </html>
