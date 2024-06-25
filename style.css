@@ -106,6 +106,13 @@ div.campo > div.table > table  tr, th, td {
     text-align: center;
 }
 
+td.firstline {
+    text-align: center;
+    font-weight: bold;
+    color: var(--cor-perguntas);
+    background-color: var(--cor-feedback-positivo);
+}
+
 div.campo > button.add_remove {
     margin: 10px 5px;
     padding: 5px;
