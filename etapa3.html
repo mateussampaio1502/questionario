@@ -56,6 +56,7 @@
         </div>
         <button class="add_remove" id="addbutton" onclick="addmember()">Adicionar Membro</button>
         <button class="add_remove" id="removebutton" onclick="removemember()">Remover Membro</button>
+        <button class="add_remove" id="savebutton">Salvar</button>
     </div>
     <div class="campo">
         <p class="required">Preencha, de acordo com a quantidade membros de seu grupo residencial, qual horário é esperado que cada pessoa esteja em casa durante um fim de semana ou feriado. Caso a rotina seja variável assinale de acordo com um valor médio ou mais provável.</p>
@@ -99,15 +100,16 @@
         </div>
         <button class="add_remove" id="addbutton" onclick="addmember_fds()">Adicionar Membro</button>
         <button class="add_remove" id="removebutton" onclick="removemember_fds()">Remover Membro</button>
+        <button class="add_remove" id="savebutton_fds">Salvar</button>
     </div>
     
     
     <div class="nav">
         <button>
-            <a href="etapa2.html" rel="previous">Voltar</a>
+            <a href="etapa2.html" rel="previous" onclick="saveData('tbody_pessoas', 'dias_uteis'); saveData('tbody_pessoas_fds', 'fds_feriados')">Voltar</a>
         </button>
         <button>
-            <a href="etapa4.html" rel="next">Próximo</a>
+            <a href="etapa4.html" rel="next" onclick="saveData('tbody_pessoas', 'dias_uteis'); saveData('tbody_pessoas_fds', 'fds_feriados')">Próximo</a>
         </button>
     </div>
     <footer>
@@ -115,44 +117,41 @@
     </footer>
 
     <script>
-        var c = 0
+        var c = 0;
 
         function addmember(){
-            var firstline = document.getElementById("l1")
-            l1.style.display = "none"
-            var tbody = document.getElementById("tbody_pessoas")
+            var tbody = document.getElementById("tbody_pessoas");
             var newrow = tbody.insertRow();
-            c++
-            var member = document.createElement("th")
-            member.textContent = `Membro ${c}`
-            newrow.appendChild(member)
+            c++;
+            var member = document.createElement("th");
+            member.textContent = `Membro ${c}`;
+            newrow.appendChild(member);
 
-            for (let i=1; i<=24; i++){
-                let cell = newrow.insertCell()
-                let checkbox = document.createElement("input")
-                checkbox.type = "checkbox"
-                checkbox.name = `membro${c}[${i}h]`
-                checkbox.id = `membro${c}[${i}h]`
+            for (let i = 0; i < 24; i++){
+                let cell = newrow.insertCell();
+                let checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = `membro${c}[${i}h]`;
+                checkbox.id = `membro${c}[${i}h]`;
                 cell.appendChild(checkbox);
             }
         }
 
         function removemember(){
-            var tbody = document.getElementById("tbody_pessoas")
-            var length = tbody.rows.length
+            var tbody = document.getElementById("tbody_pessoas");
+            var length = tbody.rows.length;
 
             if (length > 1) {
-                tbody.deleteRow(length - 1)
-                c--
+                tbody.deleteRow(length - 1);
+                c--;
             } else {
-                alert('Não há membros para remover!')
+                alert('Não há membros para remover!');
             }
         }
+
         var c_fds = 0;
 
         function addmember_fds(){
-            var firstline = document.getElementById("l2")
-            l2.style.display = "none"
             var tbody = document.getElementById("tbody_pessoas_fds");
             var newrow = tbody.insertRow();
             c_fds++;
@@ -180,7 +179,64 @@
             } else {
                 alert('Não há membros para remover!');
             }
-        }   
+        }
+
+        function saveData(tbodyId, keyPrefix) {
+            var tbody = document.getElementById(tbodyId);
+            var data = [];
+
+            for (var i = 1; i < tbody.rows.length; i++) {
+                var row = tbody.rows[i];
+                var rowData = {};
+                for (var j = 0; j < row.cells.length; j++) {
+                    var cell = row.cells[j];
+                    var checkbox = cell.querySelector('input[type="checkbox"]');
+                    if (checkbox) {
+                        rowData[checkbox.id] = checkbox.checked;
+                    }
+                }
+                data.push(rowData);
+            }
+            window.alert('Os dados foram salvos!');
+            localStorage.setItem(keyPrefix, JSON.stringify(data));
+        }
+
+        function loadData(tbodyId, keyPrefix) {
+            var data = JSON.parse(localStorage.getItem(keyPrefix));
+            if (!data) return;
+
+            var tbody = document.getElementById(tbodyId);
+            for (var i = 0; i < data.length; i++) {
+                var row = tbody.insertRow();
+                var rowData = data[i];
+                var member = document.createElement("th");
+                member.textContent = `Membro ${i + 1}`;
+                row.appendChild(member);
+
+                for (var key in rowData) {
+                    let cell = row.insertCell();
+                    let checkbox = document.createElement("input");
+                    checkbox.type = "checkbox";
+                    checkbox.id = key;
+                    checkbox.checked = rowData[key];
+                    cell.appendChild(checkbox);
+                }
+            }
+        }
+
+        window.onload = function () {
+            loadData('tbody_pessoas', 'dias_uteis');
+            loadData('tbody_pessoas_fds', 'fds_feriados');
+        };
+
+        document.getElementById('savebutton').addEventListener('click', function () {
+            saveData('tbody_pessoas', 'dias_uteis');
+        });
+
+        document.getElementById('savebutton_fds').addEventListener('click', function () {
+            saveData('tbody_pessoas_fds', 'fds_feriados');
+        });
+
     </script>
 </body>
 </html>
