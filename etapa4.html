@@ -20,13 +20,13 @@
         <div class="table">
             <table>
                 <thead>
-                    <th>Eletrodoméstico</th>
-                    <th>00h</th><th>01h</th><th>02h</th><th>03h</th>
-                    <th>04h</th><th>05h</th><th>06h</th><th>07h</th>
-                    <th>08h</th><th>09h</th><th>10h</th><th>11h</th>
-                    <th>12h</th><th>13h</th><th>14h</th><th>15h</th>
-                    <th>16h</th><th>17h</th><th>18h</th><th>19h</th>
-                    <th>20h</th><th>21h</th><th>22h</th><th>23h</th>
+                        <th>Eletrodoméstico</th>
+                        <th>00h</th><th>01h</th><th>02h</th><th>03h</th>
+                        <th>04h</th><th>05h</th><th>06h</th><th>07h</th>
+                        <th>08h</th><th>09h</th><th>10h</th><th>11h</th>
+                        <th>12h</th><th>13h</th><th>14h</th><th>15h</th>
+                        <th>16h</th><th>17h</th><th>18h</th><th>19h</th>
+                        <th>20h</th><th>21h</th><th>22h</th><th>23h</th>
                 </thead>
                 <tbody id="tbody_eletro">
                     <td>
@@ -52,35 +52,13 @@
                             <option value="Ventilador">Ventilador</option>
                         </select>
                     </td>
-                        <td><input type="checkbox" name="eletro1[0h]" id="eletro1[0h]"></td>
-                        <td><input type="checkbox" name="eletro1[1h]" id="eletro1[1h]"></td>
-                        <td><input type="checkbox" name="eletro1[2h]" id="eletro1[2h]"></td>
-                        <td><input type="checkbox" name="eletro1[3h]" id="eletro1[3h]"></td>
-                        <td><input type="checkbox" name="eletro1[4h]" id="eletro1[4h]"></td>
-                        <td><input type="checkbox" name="eletro1[5h]" id="eletro1[5h]"></td>
-                        <td><input type="checkbox" name="eletro1[6h]" id="eletro1[6h]"></td>
-                        <td><input type="checkbox" name="eletro1[7h]" id="eletro1[7h]"></td>
-                        <td><input type="checkbox" name="eletro1[8h]" id="eletro1[8h]"></td>
-                        <td><input type="checkbox" name="eletro1[9h]" id="eletro1[9h]"></td>
-                        <td><input type="checkbox" name="eletro1[10h]" id="eletro1[10h]"></td>
-                        <td><input type="checkbox" name="eletro1[11h]" id="eletro1[11h]"></td>
-                        <td><input type="checkbox" name="eletro1[12h]" id="eletro1[12h]"></td>
-                        <td><input type="checkbox" name="eletro1[13h]" id="eletro1[13h]"></td>
-                        <td><input type="checkbox" name="eletro1[14h]" id="eletro1[14h]"></td>
-                        <td><input type="checkbox" name="eletro1[15h]" id="eletro1[15h]"></td>
-                        <td><input type="checkbox" name="eletro1[16h]" id="eletro1[16h]"></td>
-                        <td><input type="checkbox" name="eletro1[17h]" id="eletro1[17h]"></td>
-                        <td><input type="checkbox" name="eletro1[18h]" id="eletro1[18h]"></td>
-                        <td><input type="checkbox" name="eletro1[19h]" id="eletro1[19h]"></td>
-                        <td><input type="checkbox" name="eletro1[20h]" id="eletro1[20h]"></td>
-                        <td><input type="checkbox" name="eletro1[21h]" id="eletro1[21h]"></td>
-                        <td><input type="checkbox" name="eletro1[22h]" id="eletro1[22h]"></td>
-                        <td><input type="checkbox" name="eletro1[23h]" id="eletro1[23h]"></td>
+                        <td class="firstline" colspan="24">Clique no botão para adicionar equipamentos</td>
                 </tbody>
             </table>
         </div>
         <button class="add_remove" id="addbutton" onclick="addEletro()">Adicionar eletrônico</button>
         <button class="add_remove" id="removebutton" onclick="removeEletro()">Remover eletrônico</button>
+        <button class="add_remove" id="savebutton" onclick="salvarDadosEletro()">Salvar</button>
     </div>
     <div class="campo">
         <p>Considere os seguintes equipamentos (em um fim de semana comum):</p>
@@ -123,36 +101,14 @@
                                 <option value="Ventilador">Ventilador</option>
                             </select>
                         </td>
-                        <td><input type="checkbox" name="eletro_weekend1[0h]" id="eletro_weekend1[0h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[1h]" id="eletro_weekend1[1h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[2h]" id="eletro_weekend1[2h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[3h]" id="eletro_weekend1[3h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[4h]" id="eletro_weekend1[4h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[5h]" id="eletro_weekend1[5h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[6h]" id="eletro_weekend1[6h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[7h]" id="eletro_weekend1[7h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[8h]" id="eletro_weekend1[8h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[9h]" id="eletro_weekend1[9h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[10h]" id="eletro_weekend1[10h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[11h]" id="eletro_weekend1[11h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[12h]" id="eletro_weekend1[12h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[13h]" id="eletro_weekend1[13h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[14h]" id="eletro_weekend1[14h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[15h]" id="eletro_weekend1[15h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[16h]" id="eletro_weekend1[16h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[17h]" id="eletro_weekend1[17h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[18h]" id="eletro_weekend1[18h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[19h]" id="eletro_weekend1[19h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[20h]" id="eletro_weekend1[20h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[21h]" id="eletro_weekend1[21h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[22h]" id="eletro_weekend1[22h]"></td>
-                        <td><input type="checkbox" name="eletro_weekend1[23h]" id="eletro_weekend1[23h]"></td>
+                        <td class="firstline" colspan="24">Clique no botão para adicionar equipamentos</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <button class="add_remove" id="addbutton" onclick="addEletro_weekend()">Adicionar eletrônico</button>
         <button class="add_remove" id="removebutton" onclick="removeEletro_weekend()">Remover eletrônico</button>
+        <button class="add_remove" id="savebuttonWeekend" onclick="salvarDadosEletroWeekend()">Salvar</button>
     </div>
 
     <div class="campo">
@@ -191,6 +147,7 @@
         </div>
         <button class="add_remove" id="addbutton" onclick="addEletro_esp()">Adicionar eletrônico</button>
         <button class="add_remove" id="removebutton" onclick="removeEletro_esp()">Remover eletrônico</button>
+        <button class="add_remove" id="savebuttonEsp" onclick="salvarDadosEletroEsp()">Salvar</button>
     </div>
     
     <div class="nav">
@@ -302,6 +259,109 @@
                 alert('Não há eletrodomésticos para remover')
             }
         }
+
+        
+    function salvarDadosEletro() {
+        let data = [];
+        let tbody = document.getElementById("tbody_eletro").rows;
+        for (let i = 1; i < tbody.length; i++) {
+            let equipamento = tbody[i].cells[0].textContent;
+            let horas = [];
+            for (let j = 1; j <= 24; j++) {
+                let checkbox = tbody[i].cells[j].querySelector("input[type='checkbox']");
+                horas.push(checkbox.checked);
+            }
+            data.push({ equipamento: equipamento, horas: horas });
+        }
+        localStorage.setItem("dados_eletro", JSON.stringify(data));
+        alert("Dados de dias úteis salvos com sucesso!");
+    }
+
+
+    function salvarDadosEletroWeekend() {
+        let data_weekend = [];
+        let tbody_weekend = document.getElementById("tbody_eletro_weekend").rows;
+        for (let i = 1; i < tbody_weekend.length; i++) {
+            let equipamento = tbody_weekend[i].cells[0].textContent;
+            let horas = [];
+            for (let j = 1; j <= 24; j++) {
+                let checkbox = tbody_weekend[i].cells[j].querySelector("input[type='checkbox']");
+                horas.push(checkbox.checked);
+            }
+            data_weekend.push({ equipamento: equipamento, horas: horas });
+        }
+        localStorage.setItem("dados_eletro_weekend", JSON.stringify(data_weekend));
+        alert("Dados de finais de semana salvos com sucesso!");
+    }
+
+    function salvarDadosEletroEsp() {
+        let data_esp = [];
+        let tbody_esp = document.getElementById("tbody_eletro_esp").rows;
+        for (let i = 1; i < tbody_esp.length; i++) {
+            let equipamento = tbody_esp[i].cells[0].textContent;
+            let quantidade = tbody_esp[i].cells[1].textContent;
+            let tempo = tbody_esp[i].cells[2].textContent;
+            data_esp.push({ equipamento: equipamento, quantidade: quantidade, tempo: tempo });
+        }
+        localStorage.setItem("dados_eletro_esp", JSON.stringify(data_esp));
+        alert("Dados de equipamentos especiais salvos com sucesso!");
+    }
+
+
+    function carregarDados() {
+        
+        let data = JSON.parse(localStorage.getItem("dados_eletro"));
+        if (data) {
+            let tbody = document.getElementById("tbody_eletro");
+            data.forEach(item => {
+                let newRow = tbody.insertRow();
+                newRow.insertCell().textContent = item.equipamento;
+                item.horas.forEach(checked => {
+                    let cell = newRow.insertCell();
+                    let check = document.createElement("input");
+                    check.type = "checkbox";
+                    check.checked = checked;
+                    cell.appendChild(check);
+                });
+            });
+        }
+
+    
+        let data_weekend = JSON.parse(localStorage.getItem("dados_eletro_weekend"));
+        if (data_weekend) {
+            let tbody_weekend = document.getElementById("tbody_eletro_weekend");
+            data_weekend.forEach(item => {
+                let newRow = tbody_weekend.insertRow();
+                newRow.insertCell().textContent = item.equipamento;
+                item.horas.forEach(checked => {
+                    let cell = newRow.insertCell();
+                    let check = document.createElement("input");
+                    check.type = "checkbox";
+                    check.checked = checked;
+                    cell.appendChild(check);
+                });
+            });
+        }
+
+
+        let data_esp = JSON.parse(localStorage.getItem("dados_eletro_esp"));
+        if (data_esp) {
+            let tbody_esp = document.getElementById("tbody_eletro_esp");
+            data_esp.forEach(item => {
+                let newRow = tbody_esp.insertRow();
+                newRow.insertCell().textContent = item.equipamento;
+                let qtdCell = newRow.insertCell();
+                qtdCell.textContent = item.quantidade;
+                let horaCell = newRow.insertCell();
+                horaCell.textContent = item.tempo;
+            });
+        }
+    }
+
+    window.onload = function() {
+        carregarDados();
+    };
+
     </script>
     
 </body>
