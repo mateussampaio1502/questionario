@@ -107,7 +107,7 @@
                     nivel2: nivel2
                 };
 
-                localStorage.setItem('dadosFormulario2', JSON.stringify(dados));
+                localStorage.setItem('dadosEficiencia', JSON.stringify(dados));
                 alert('Dados salvos com sucesso!');
             } else {
                 alert('Por favor, preencha todos os campos.');
@@ -115,7 +115,7 @@
         }
 
         function carregarDados() {
-            const dados = JSON.parse(localStorage.getItem('dadosFormulario2'));
+            const dados = JSON.parse(localStorage.getItem('dadosEficiencia'));
             if (dados) {
                 if (dados.nivel === 'A') document.getElementById('nivel-a').checked = true;
                 else if (dados.nivel === 'B') document.getElementById('nivel-b').checked = true;

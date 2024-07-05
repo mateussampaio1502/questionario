@@ -70,7 +70,7 @@
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 
 <script>
@@ -86,7 +86,7 @@
             contato: contato
         };
 
-        localStorage.setItem('dadosFormulario', JSON.stringify(dados));
+        localStorage.setItem('dadosPessoais', JSON.stringify(dados));
         alert('Dados salvos com sucesso!');
     } else {
         alert('Por favor, preencha todos os campos.');
@@ -94,7 +94,7 @@
 }
 
 function carregarDados() {
-    const dados = JSON.parse(localStorage.getItem('dadosFormulario'));
+    const dados = JSON.parse(localStorage.getItem('dadosPessoais'));
     if (dados) {
         document.getElementById('cidade').value = dados.cidade;
         document.getElementById('subgrupo').value = dados.subgrupo;

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Formulário</title>
+
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script src="../back-end/app.js" type="module"></script>
 </head>
 <body>
     <header>
@@ -154,7 +158,8 @@
         <button>
             <a href="etapa3.html" rel="previous">Voltar</a>
         </button>
-        <input type="submit" name="fim" id="fim">
+        <button id="addDataBtn">Enviar</button>
+        <!-- <input type="submit" name="fim" id="fim"> -->
     </div>
     <footer>
         <p>Mateus Sampaio &reg;</p>
