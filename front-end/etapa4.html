@@ -1,36 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Formulário</title>
-
+    
+    <!-- Firebase Conection -->
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
     <script src="../back-end/app.js" type="module"></script>
 </head>
+
 <body>
     <header>
         <h1>ANÁLISE DE POTÊNCIA</h1>
     </header>
     <div class="campo">
-        <p>Obrigado por ter chegado até aqui, esta é a etapa mais importante do questionário e será responsável por prover as informações mais essenciais da pesquisa. Tente responder com a atenção reforçada, pois esta seção exige que lembremos de algumas informações mais detalhadas.</p>
+        <p>Obrigado por ter chegado até aqui, esta é a etapa mais importante do questionário e será responsável por
+            prover as informações mais essenciais da pesquisa. Tente responder com a atenção reforçada, pois esta seção
+            exige que lembremos de algumas informações mais detalhadas.</p>
         <p id="obg">* Indica uma pergunta obrigatória</p>
     </div>
     <div class="campo">
         <p>Considere os seguintes equipamentos (em um dia útil comum):</p>
-        <p>Air fryer, ar-condicionado, chapa, chuveiro elétrico, computador, consoles de videogame, forno elétrico, freezer, geladeira de 1 porta, geladeira de duas portas, grelha elétrica, lâmpada fluorescente, lâmpada incandescente, lâmpada LED, liquidificador, modem de wi-fi, televisão e ventilador.</p>
+        <p>Air fryer, ar-condicionado, chapa, chuveiro elétrico, computador, consoles de videogame, forno elétrico,
+            freezer, geladeira de 1 porta, geladeira de duas portas, grelha elétrica, lâmpada fluorescente, lâmpada
+            incandescente, lâmpada LED, liquidificador, modem de wi-fi, televisão e ventilador.</p>
         <div class="table">
             <table>
                 <thead>
-                        <th>Eletrodoméstico</th>
-                        <th>00h</th><th>01h</th><th>02h</th><th>03h</th>
-                        <th>04h</th><th>05h</th><th>06h</th><th>07h</th>
-                        <th>08h</th><th>09h</th><th>10h</th><th>11h</th>
-                        <th>12h</th><th>13h</th><th>14h</th><th>15h</th>
-                        <th>16h</th><th>17h</th><th>18h</th><th>19h</th>
-                        <th>20h</th><th>21h</th><th>22h</th><th>23h</th>
+                    <th>Eletrodoméstico</th>
+                    <th>00h</th>
+                    <th>01h</th>
+                    <th>02h</th>
+                    <th>03h</th>
+                    <th>04h</th>
+                    <th>05h</th>
+                    <th>06h</th>
+                    <th>07h</th>
+                    <th>08h</th>
+                    <th>09h</th>
+                    <th>10h</th>
+                    <th>11h</th>
+                    <th>12h</th>
+                    <th>13h</th>
+                    <th>14h</th>
+                    <th>15h</th>
+                    <th>16h</th>
+                    <th>17h</th>
+                    <th>18h</th>
+                    <th>19h</th>
+                    <th>20h</th>
+                    <th>21h</th>
+                    <th>22h</th>
+                    <th>23h</th>
                 </thead>
                 <tbody id="tbody_eletro">
                     <td>
@@ -56,7 +81,7 @@
                             <option value="Ventilador">Ventilador</option>
                         </select>
                     </td>
-                        <td class="firstline" colspan="24">Clique no botão para adicionar equipamentos</td>
+                    <td class="firstline" colspan="24">Clique no botão para adicionar equipamentos</td>
                 </tbody>
             </table>
         </div>
@@ -66,18 +91,38 @@
     </div>
     <div class="campo">
         <p>Considere os seguintes equipamentos (em um fim de semana comum):</p>
-        <p>Air fryer, ar-condicionado, chapa, chuveiro elétrico, computador, consoles de videogame, forno elétrico, freezer, geladeira de 1 porta, geladeira de duas portas, grelha elétrica, lâmpada fluorescente, lâmpada incandescente, lâmpada LED, liquidificador, modem de wi-fi, televisão e ventilador.</p>
+        <p>Air fryer, ar-condicionado, chapa, chuveiro elétrico, computador, consoles de videogame, forno elétrico,
+            freezer, geladeira de 1 porta, geladeira de duas portas, grelha elétrica, lâmpada fluorescente, lâmpada
+            incandescente, lâmpada LED, liquidificador, modem de wi-fi, televisão e ventilador.</p>
         <div class="table">
             <table>
                 <thead>
                     <tr>
                         <th>Eletrodoméstico</th>
-                        <th>00h</th><th>01h</th><th>02h</th><th>03h</th>
-                        <th>04h</th><th>05h</th><th>06h</th><th>07h</th>
-                        <th>08h</th><th>09h</th><th>10h</th><th>11h</th>
-                        <th>12h</th><th>13h</th><th>14h</th><th>15h</th>
-                        <th>16h</th><th>17h</th><th>18h</th><th>19h</th>
-                        <th>20h</th><th>21h</th><th>22h</th><th>23h</th>
+                        <th>00h</th>
+                        <th>01h</th>
+                        <th>02h</th>
+                        <th>03h</th>
+                        <th>04h</th>
+                        <th>05h</th>
+                        <th>06h</th>
+                        <th>07h</th>
+                        <th>08h</th>
+                        <th>09h</th>
+                        <th>10h</th>
+                        <th>11h</th>
+                        <th>12h</th>
+                        <th>13h</th>
+                        <th>14h</th>
+                        <th>15h</th>
+                        <th>16h</th>
+                        <th>17h</th>
+                        <th>18h</th>
+                        <th>19h</th>
+                        <th>20h</th>
+                        <th>21h</th>
+                        <th>22h</th>
+                        <th>23h</th>
                     </tr>
                 </thead>
                 <tbody id="tbody_eletro_weekend">
@@ -153,7 +198,7 @@
         <button class="add_remove" id="removebutton" onclick="removeEletro_esp()">Remover eletrônico</button>
         <button class="add_remove" id="savebuttonEsp" onclick="salvarDadosEletroEsp()">Salvar</button>
     </div>
-    
+
     <div class="nav">
         <button>
             <a href="etapa3.html" rel="previous">Voltar</a>
@@ -164,77 +209,79 @@
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
-    
+
     <script>
         var count = 1
 
-        function addEletro(){
+        function addEletro() {
             count++
             let tbody = document.getElementById("tbody_eletro")
             let newRow = tbody.insertRow();
             let eletroSelect = document.getElementById("eletro")
             let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text
             let index = eletroSelect.selectedIndex
-            if (index==0){
+            if (index == 0) {
                 alert("Selecione uma opção válida")
             } else {
-            newRow.insertCell().textContent = selectedEletro
-            for (let i = 0; i < 24; i++){
-                let cell = newRow.insertCell();
-                let check = document.createElement("input")
-                check.type = "checkbox"
-                check.name = `eletro${count}[${i}]`
-                check.id = `eletro${count}[${i}]`
-                cell.appendChild(check)
-            }}
+                newRow.insertCell().textContent = selectedEletro
+                for (let i = 0; i < 24; i++) {
+                    let cell = newRow.insertCell();
+                    let check = document.createElement("input")
+                    check.type = "checkbox"
+                    check.name = `eletro${count}[${i}]`
+                    check.id = `eletro${count}[${i}]`
+                    cell.appendChild(check)
+                }
+            }
 
         }
 
-        function removeEletro(){
+        function removeEletro() {
             var tbody = document.getElementById("tbody_eletro")
             var length = tbody.rows.length
 
-            if (length > 1){
+            if (length > 1) {
                 tbody.deleteRow(length - 1)
             } else {
                 alert('Não há eletrodomésticos para remover')
             }
         }
 
-        function addEletro_weekend(){
+        function addEletro_weekend() {
             count++
             let tbody = document.getElementById("tbody_eletro_weekend")
             let newRow = tbody.insertRow();
             let eletroSelect = document.getElementById("eletro_weekend")
             let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text
             let index = eletroSelect.selectedIndex
-            if (index==0){
+            if (index == 0) {
                 alert("Selecione uma opção válida")
             } else {
-            newRow.insertCell().textContent = selectedEletro
-            for (let i = 0; i < 24; i++){
-                let cell = newRow.insertCell();
-                let check = document.createElement("input")
-                check.type = "checkbox"
-                check.name = `eletro_weekend${count}[${i}]`
-                check.id = `eletro_weekend${count}[${i}]`
-                cell.appendChild(check)
-            }}
+                newRow.insertCell().textContent = selectedEletro
+                for (let i = 0; i < 24; i++) {
+                    let cell = newRow.insertCell();
+                    let check = document.createElement("input")
+                    check.type = "checkbox"
+                    check.name = `eletro_weekend${count}[${i}]`
+                    check.id = `eletro_weekend${count}[${i}]`
+                    cell.appendChild(check)
+                }
+            }
 
         }
 
-        function removeEletro_weekend(){
+        function removeEletro_weekend() {
             var tbody = document.getElementById("tbody_eletro_weekend")
             var length = tbody.rows.length
 
-            if (length > 1){
+            if (length > 1) {
                 tbody.deleteRow(length - 1)
             } else {
                 alert('Não há eletrodomésticos para remover')
             }
         }
 
-        function addEletro_esp(){
+        function addEletro_esp() {
             let tbody = document.getElementById("tbody_eletro_esp")
             let eletroSelect = document.getElementById("eletro_esp")
             let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text
@@ -242,7 +289,7 @@
             let qtd = Number(document.getElementById("qtd").value)
             let hora = Number(document.getElementById("hora").value)
 
-            if (index == 0 || qtd <=0 || hora <=0 ){
+            if (index == 0 || qtd <= 0 || hora <= 0) {
                 alert('Há algo errado! Verifique os dados e tente novamente.')
             } else {
                 let newRow = tbody.insertRow()
@@ -254,120 +301,121 @@
             }
         }
 
-        function removeEletro_esp(){
+        function removeEletro_esp() {
             let tbody = document.getElementById("tbody_eletro_esp")
             let length = tbody.rows.length
 
-            if (length > 1){
+            if (length > 1) {
                 tbody.deleteRow(length - 1)
             } else {
                 alert('Não há eletrodomésticos para remover')
             }
         }
 
-        
-    function salvarDadosEletro() {
-        let data = [];
-        let tbody = document.getElementById("tbody_eletro").rows;
-        for (let i = 1; i < tbody.length; i++) {
-            let equipamento = tbody[i].cells[0].textContent;
-            let horas = [];
-            for (let j = 1; j <= 24; j++) {
-                let checkbox = tbody[i].cells[j].querySelector("input[type='checkbox']");
-                horas.push(checkbox.checked);
+
+        function salvarDadosEletro() {
+            let data = [];
+            let tbody = document.getElementById("tbody_eletro").rows;
+            for (let i = 1; i < tbody.length; i++) {
+                let equipamento = tbody[i].cells[0].textContent;
+                let horas = [];
+                for (let j = 1; j <= 24; j++) {
+                    let checkbox = tbody[i].cells[j].querySelector("input[type='checkbox']");
+                    horas.push(checkbox.checked);
+                }
+                data.push({ equipamento: equipamento, horas: horas });
             }
-            data.push({ equipamento: equipamento, horas: horas });
+            localStorage.setItem("dados_eletro", JSON.stringify(data));
+            alert("Dados de dias úteis salvos com sucesso!");
         }
-        localStorage.setItem("dados_eletro", JSON.stringify(data));
-        alert("Dados de dias úteis salvos com sucesso!");
-    }
 
 
-    function salvarDadosEletroWeekend() {
-        let data_weekend = [];
-        let tbody_weekend = document.getElementById("tbody_eletro_weekend").rows;
-        for (let i = 1; i < tbody_weekend.length; i++) {
-            let equipamento = tbody_weekend[i].cells[0].textContent;
-            let horas = [];
-            for (let j = 1; j <= 24; j++) {
-                let checkbox = tbody_weekend[i].cells[j].querySelector("input[type='checkbox']");
-                horas.push(checkbox.checked);
+        function salvarDadosEletroWeekend() {
+            let data_weekend = [];
+            let tbody_weekend = document.getElementById("tbody_eletro_weekend").rows;
+            for (let i = 1; i < tbody_weekend.length; i++) {
+                let equipamento = tbody_weekend[i].cells[0].textContent;
+                let horas = [];
+                for (let j = 1; j <= 24; j++) {
+                    let checkbox = tbody_weekend[i].cells[j].querySelector("input[type='checkbox']");
+                    horas.push(checkbox.checked);
+                }
+                data_weekend.push({ equipamento: equipamento, horas: horas });
             }
-            data_weekend.push({ equipamento: equipamento, horas: horas });
+            localStorage.setItem("dados_eletro_weekend", JSON.stringify(data_weekend));
+            alert("Dados de finais de semana salvos com sucesso!");
         }
-        localStorage.setItem("dados_eletro_weekend", JSON.stringify(data_weekend));
-        alert("Dados de finais de semana salvos com sucesso!");
-    }
 
-    function salvarDadosEletroEsp() {
-        let data_esp = [];
-        let tbody_esp = document.getElementById("tbody_eletro_esp").rows;
-        for (let i = 1; i < tbody_esp.length; i++) {
-            let equipamento = tbody_esp[i].cells[0].textContent;
-            let quantidade = tbody_esp[i].cells[1].textContent;
-            let tempo = tbody_esp[i].cells[2].textContent;
-            data_esp.push({ equipamento: equipamento, quantidade: quantidade, tempo: tempo });
+        function salvarDadosEletroEsp() {
+            let data_esp = [];
+            let tbody_esp = document.getElementById("tbody_eletro_esp").rows;
+            for (let i = 1; i < tbody_esp.length; i++) {
+                let equipamento = tbody_esp[i].cells[0].textContent;
+                let quantidade = tbody_esp[i].cells[1].textContent;
+                let tempo = tbody_esp[i].cells[2].textContent;
+                data_esp.push({ equipamento: equipamento, quantidade: quantidade, tempo: tempo });
+            }
+            localStorage.setItem("dados_eletro_esp", JSON.stringify(data_esp));
+            alert("Dados de equipamentos especiais salvos com sucesso!");
         }
-        localStorage.setItem("dados_eletro_esp", JSON.stringify(data_esp));
-        alert("Dados de equipamentos especiais salvos com sucesso!");
-    }
 
 
-    function carregarDados() {
-        
-        let data = JSON.parse(localStorage.getItem("dados_eletro"));
-        if (data) {
-            let tbody = document.getElementById("tbody_eletro");
-            data.forEach(item => {
-                let newRow = tbody.insertRow();
-                newRow.insertCell().textContent = item.equipamento;
-                item.horas.forEach(checked => {
-                    let cell = newRow.insertCell();
-                    let check = document.createElement("input");
-                    check.type = "checkbox";
-                    check.checked = checked;
-                    cell.appendChild(check);
+        function carregarDados() {
+
+            let data = JSON.parse(localStorage.getItem("dados_eletro"));
+            if (data) {
+                let tbody = document.getElementById("tbody_eletro");
+                data.forEach(item => {
+                    let newRow = tbody.insertRow();
+                    newRow.insertCell().textContent = item.equipamento;
+                    item.horas.forEach(checked => {
+                        let cell = newRow.insertCell();
+                        let check = document.createElement("input");
+                        check.type = "checkbox";
+                        check.checked = checked;
+                        cell.appendChild(check);
+                    });
                 });
-            });
-        }
+            }
 
-    
-        let data_weekend = JSON.parse(localStorage.getItem("dados_eletro_weekend"));
-        if (data_weekend) {
-            let tbody_weekend = document.getElementById("tbody_eletro_weekend");
-            data_weekend.forEach(item => {
-                let newRow = tbody_weekend.insertRow();
-                newRow.insertCell().textContent = item.equipamento;
-                item.horas.forEach(checked => {
-                    let cell = newRow.insertCell();
-                    let check = document.createElement("input");
-                    check.type = "checkbox";
-                    check.checked = checked;
-                    cell.appendChild(check);
+
+            let data_weekend = JSON.parse(localStorage.getItem("dados_eletro_weekend"));
+            if (data_weekend) {
+                let tbody_weekend = document.getElementById("tbody_eletro_weekend");
+                data_weekend.forEach(item => {
+                    let newRow = tbody_weekend.insertRow();
+                    newRow.insertCell().textContent = item.equipamento;
+                    item.horas.forEach(checked => {
+                        let cell = newRow.insertCell();
+                        let check = document.createElement("input");
+                        check.type = "checkbox";
+                        check.checked = checked;
+                        cell.appendChild(check);
+                    });
                 });
-            });
+            }
+
+
+            let data_esp = JSON.parse(localStorage.getItem("dados_eletro_esp"));
+            if (data_esp) {
+                let tbody_esp = document.getElementById("tbody_eletro_esp");
+                data_esp.forEach(item => {
+                    let newRow = tbody_esp.insertRow();
+                    newRow.insertCell().textContent = item.equipamento;
+                    let qtdCell = newRow.insertCell();
+                    qtdCell.textContent = item.quantidade;
+                    let horaCell = newRow.insertCell();
+                    horaCell.textContent = item.tempo;
+                });
+            }
         }
 
-
-        let data_esp = JSON.parse(localStorage.getItem("dados_eletro_esp"));
-        if (data_esp) {
-            let tbody_esp = document.getElementById("tbody_eletro_esp");
-            data_esp.forEach(item => {
-                let newRow = tbody_esp.insertRow();
-                newRow.insertCell().textContent = item.equipamento;
-                let qtdCell = newRow.insertCell();
-                qtdCell.textContent = item.quantidade;
-                let horaCell = newRow.insertCell();
-                horaCell.textContent = item.tempo;
-            });
-        }
-    }
-
-    window.onload = function() {
-        carregarDados();
-    };
+        window.onload = function () {
+            carregarDados();
+        };
 
     </script>
-    
+
 </body>
+
 </html>

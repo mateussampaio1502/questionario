@@ -22,3 +22,17 @@
 <!-- <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
     <script src="app.js"></script> -->
+
+    // const getData = () => {
+      //     const dados = []
+      //     db.collection("moradores").get().then((querySnapshot) => {
+      //         querySnapshot.forEach((doc) => {
+      //             dados.push({
+      //                 id: doc.id,
+      //                 nome: doc.data().nome,
+      //                 salario: doc.data().salario,
+      //             })
+      //         });
+      //         console.log(dados)
+      //     });
+      // }

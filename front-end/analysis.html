@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Formulário</title>
+    <!-- Firebase Conection -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+
+    <!-- Chars Conection -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../back-end/charts.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <h1>Dashboard</h1>
+    </header>
+    <div class="campo">
+        <div>
+            <canvas id="graficoCidades"></canvas>
+        </div>
+        <div>
+            <canvas id="graficoHorariosDiasUteis"></canvas>
+        </div>
+    </div>
+    <div class="nav">
+        <button id="refreshBtn">
+            🔄
+        </button>
+        <button>
+            <a href="#">Voltar</a>
+        </button>
+        <button id="getBtn">Get</button>
+        <button id="testeBtn">Teste</button>
+        <button>
+            <a href="#">Próximo</a>
+        </button>
+    </div>
+    <footer>
+        <p>Mateus Sampaio &reg;</p>
+    </footer>
+    <script >
+        
+       
+    </script>
+</body>
+
+</html>

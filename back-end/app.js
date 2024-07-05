@@ -8,7 +8,7 @@ const addData = () => {
 
     //Pega os dados dos campos do LocalStorage
     const dadosPessoais = localStorage.getItem('dadosPessoais')
-    const dadosEficiencia = localStorage.getItem('dadosPessoais')
+    const dadosEficiencia = localStorage.getItem('dadosEficiencia')
     const horariosDiasUteis = localStorage.getItem('horariosDiasUteis')
     const horariosFeriadosFDS = localStorage.getItem('horariosFeriadosFDS')
     const dados_eletro = localStorage.getItem('dados_eletro')
