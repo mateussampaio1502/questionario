@@ -12,10 +12,13 @@ const refreshBtn = document.getElementById('refreshBtn');
 const dadosCidades = async () => {
     const cities = [];
     const cityCount = {};
+    const contatos = [];
     const querySnapshot = await db.collection(TABELA_CADASTROS).get();
     querySnapshot.forEach((doc) => {
         const city = JSON.parse(doc.data().dadosPessoais).cidade;
+        const contato = JSON.parse(doc.data().dadosPessoais).contato;
         cityCount[city] = (cityCount[city] || 0) + 1;
+        contatos.push(contato);
     });
     for (const city in cityCount) {
         cities.push([city, cityCount[city]]);
@@ -23,7 +26,8 @@ const dadosCidades = async () => {
     return {
         cities: cities,
         names: cities.map(city => city[0]),
-        quantidades: cities.map(city => city[1])
+        quantidades: cities.map(city => city[1]),
+        listaDeContatos: contatos
     };
 }
 //Dados disponíveis para subgrupos: [nomes, quantidades], [nomes], [quantidades]
@@ -130,14 +134,16 @@ refreshBtn.addEventListener('click', async () => {
             }
         }
     });
+    const contatos = (await dadosCidades()).listaDeContatos
     new Chart(graficoHorariosDiasUteis, {
         type: 'bar',
         data: {
             labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
             datasets: (await dadosHorariosDiasUteis()).pessoasEmCasa.map((item, index)=>{
                 const color = randomColor()
+                console.log(contatos[index])
                 return {
-                    label: 'Pessoa ' + index,
+                    label: contatos[index] + " - Moradores",
                     data: item,
                     backgroundColor: color.backgroundColor,
                     borderColor: color.borderColor,
