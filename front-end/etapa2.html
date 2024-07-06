@@ -91,20 +91,20 @@
             const nivelA2 = document.getElementById('nivel-A').checked;
             const nivelB2 = document.getElementById('nivel-B').checked;
 
-            let nivel = '';
-            if (nivelA) nivel = 'A';
-            else if (nivelB) nivel = 'B';
-            else if (nivelC) nivel = 'C';
-            else if (nivelD) nivel = 'D';
+            let nivelEficiencia = '';
+            if (nivelA) nivelEficiencia = 'A';
+            else if (nivelB) nivelEficiencia = 'B';
+            else if (nivelC) nivelEficiencia = 'C';
+            else if (nivelD) nivelEficiencia = 'D';
 
-            let nivel2 = '';
-            if (nivelA2) nivel2 = 'A';
-            else if (nivelB2) nivel2 = 'B';
+            let nivelManutencao = '';
+            if (nivelA2) nivelManutencao = 'A';
+            else if (nivelB2) nivelManutencao = 'B';
 
-            if (nivel && nivel2) {
+            if (nivelEficiencia && nivelManutencao) {
                 const dados = {
-                    nivel: nivel,
-                    nivel2: nivel2
+                    nivelEficiencia: nivelEficiencia,
+                    nivelManutencao: nivelManutencao
                 };
 
                 localStorage.setItem('dadosEficiencia', JSON.stringify(dados));
@@ -117,13 +117,13 @@
         function carregarDados() {
             const dados = JSON.parse(localStorage.getItem('dadosEficiencia'));
             if (dados) {
-                if (dados.nivel === 'A') document.getElementById('nivel-a').checked = true;
-                else if (dados.nivel === 'B') document.getElementById('nivel-b').checked = true;
-                else if (dados.nivel === 'C') document.getElementById('nivel-c').checked = true;
-                else if (dados.nivel === 'D') document.getElementById('nivel-d').checked = true;
+                if (dados.nivelEficiencia === 'A') document.getElementById('nivel-a').checked = true;
+                else if (dados.nivelEficiencia === 'B') document.getElementById('nivel-b').checked = true;
+                else if (dados.nivelEficiencia === 'C') document.getElementById('nivel-c').checked = true;
+                else if (dados.nivelEficiencia === 'D') document.getElementById('nivel-d').checked = true;
 
-                if (dados.nivel2 === 'A') document.getElementById('nivel-A').checked = true;
-                else if (dados.nivel2 === 'B') document.getElementById('nivel-B').checked = true;
+                if (dados.nivelManutencao === 'A') document.getElementById('nivel-A').checked = true;
+                else if (dados.nivelManutencao === 'B') document.getElementById('nivel-B').checked = true;
             }
         }
 

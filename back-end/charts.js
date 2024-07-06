@@ -5,6 +5,10 @@ import {db} from '../back-end/firebase.js'
 const graficoCidades = document.getElementById('graficoCidades');
 const graficoHorariosDiasUteis = document.getElementById('graficoHorariosDiasUteis');
 const graficoHorariosFeriadosFDS = document.getElementById('graficoHorariosFeriadosFDS');
+const graficoEficiencia = document.getElementById('graficoEficiencia');
+const graficoManutencao = document.getElementById('graficoManutencao');
+const ctx = document.getElementById('myChart').getContext('2d');
+
 const getBtn = document.getElementById('getBtn');
 const testeBtn = document.getElementById('testeBtn');
 const refreshBtn = document.getElementById('refreshBtn');
@@ -95,7 +99,7 @@ const dadosHorariosDiasUteis = async () => {
         quantidadeTotalDeMembros: quantidadeTotalDeMembros
     };
 }
-
+//Dados disponíveis para horários em feriados e fim de semana: [pessoasEmCasa, quantidadeTotalDeMembros]
 const dadosHorariosFeriadosFDS= async () => {
     const querySnapshot = await db.collection(TABELA_CADASTROS).get();
     const totalHoras = 24;
@@ -152,6 +156,58 @@ const randomColor = () => {
     };
 }
 
+//Dados para eficiência
+const dadosEficiencia = async () => {
+    const nivelEficiencia = [];
+    const nivelManutencao = [];
+    const cityCount = {};
+ 
+    const querySnapshot = await db.collection(TABELA_CADASTROS).get();
+    querySnapshot.forEach((doc) => {
+        const niveis = JSON.parse(doc.data().dadosEficiencia);
+        console.log(niveis)
+        switch (niveis.nivelEficiencia) {
+            case 'A':
+                nivelEficiencia.push([1, 0, 0, 0]);
+                break;
+            case 'B':
+                nivelEficiencia.push([0, 1, 0, 0]);
+                break;
+            case 'C':
+                nivelEficiencia.push([0, 0, 1, 0]);
+                break;
+            case 'D':
+                nivelEficiencia.push([0, 0, 0, 1]);
+                break;
+            default:
+                console.log('Nível de eficiência não encontrado')
+                break;
+        }
+        switch (niveis.nivelManutencao) {
+            case 'A':
+                nivelManutencao.push([1, 0, 0, 0]);
+                break;
+            case 'B':
+                nivelManutencao.push([0, 1, 0, 0]);
+                break;
+            case 'C':
+                nivelManutencao.push([0, 0, 1, 0]);
+                break;
+            case 'D':
+                nivelManutencao.push([0, 0, 0, 1]);
+                break;
+            default:
+                console.log('Nível de Manutenção não encontrado')
+                break;
+        }
+
+    });
+
+    return {
+        nivelEficiencia: nivelEficiencia,
+        nivelManutencao: nivelManutencao
+    };
+}
 
 getBtn.addEventListener('click', dadosCidades);
 refreshBtn.addEventListener('click', async () => {
@@ -251,8 +307,166 @@ refreshBtn.addEventListener('click', async () => {
             }
         }
     });
+
+    //Nível de eficiência
+    new Chart(graficoEficiencia, {
+        type: 'bar',
+        data: {
+            labels: ['A', 'B', 'C', 'D'],
+            datasets: (await dadosEficiencia()).nivelEficiencia.map((item, index)=>{
+                const color = randomColor()
+                return {
+                    label: contatos[index] + " - Moradores",
+                    data: item,
+                    backgroundColor: color.backgroundColor,
+                    borderColor: color.borderColor,
+                    borderWidth: 1
+                }
+            })
+        },
+        options: {
+            plugins: {
+            title: {
+                display: true,
+                text: 'Nível de Eficiência dos Equipamentos Domésticos'
+            }
+        },
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        }
+    });
+
+    //Nível de Manutenção
+    new Chart(graficoManutencao, {
+        type: 'bar',
+        data: {
+            labels: ['A', 'B', 'C', 'D'],
+            datasets: (await dadosEficiencia()).nivelManutencao.map((item, index)=>{
+                const color = randomColor()
+                return {
+                    label: contatos[index] + " - Moradores",
+                    data: item,
+                    backgroundColor: color.backgroundColor,
+                    borderColor: color.borderColor,
+                    borderWidth: 1
+                }
+            })
+        },
+        options: {
+            plugins: {
+            title: {
+                display: true,
+                text: 'Nível de Manutenção dos Equipamentos Domésticos'
+            }
+        },
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        }
+    });
+
+    //Eletrodomésticos
+    
+    const ctx = document.getElementById('myChart').getContext('2d');
+        
+    // Mock data
+    const data = {
+        datasets: [
+            {
+                label: 'Eletrodoméstico 1',
+                data: [
+                    { x: 8, y: 'Morador 1', r: 10 },
+                    { x: 10, y: 'Morador 2', r: 15 },
+                    { x: 14, y: 'Morador 3', r: 20 }
+                ],
+                backgroundColor: 'rgba(255, 99, 132, 0.5)'
+            },
+            {
+                label: 'Eletrodoméstico 2',
+                data: [
+                    { x: 9, y: 'Morador 1', r: 20 },
+                    { x: 12, y: 'Morador 2', r: 10 },
+                    { x: 18, y: 'Morador 3', r: 15 }
+                ],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)'
+            },
+            {
+                label: 'Eletrodoméstico 3',
+                data: [
+                    { x: 11, y: 'Morador 1', r: 30 },
+                    { x: 16, y: 'Morador 2', r: 25 },
+                    { x: 19, y: 'Morador 3', r: 10 }
+                ],
+                backgroundColor: 'rgba(75, 192, 192, 0.5)'
+            }
+        ]
+    };
+
+    // Define the scales for the x and y axes
+    const options = {
+        scales: {
+            x: {
+                type: 'linear',
+                position: 'bottom',
+                min: 0,
+                max: 23,
+                title: {
+                    display: true,
+                    text: 'Horas'
+                },
+                ticks: {
+                    callback: function(value) {
+                        return value + 'h';
+                    }
+                }
+            },
+            y: {
+                type: 'category',
+                title: {
+                    display: true,
+                    text: 'Moradores'
+                },
+                labels: ['Morador 1', 'Morador 2', 'Morador 3']
+            }
+        },
+        plugins: {
+            legend: {
+                display: true,
+                position: 'top'
+            },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        const label = context.dataset.label || '';
+                        const x = context.raw.x + 'h';
+                        const y = context.raw.y;
+                        const r = context.raw.r;
+                        return `${label}: (${x}, ${y}, Quantidade: ${r})`;
+                    }
+                }
+            }
+        }
+    };
+
+    // Create the chart
+    const myChart = new Chart(ctx, {
+        type: 'bubble',
+        data: data,
+        options: options
+    });
 })
 testeBtn.addEventListener('click', async () => {
     //Por exemplo, quero pegar o retorno da função dadosCidades e fazer algo com ele, sem receber undefined
-    console.log('asd')
+    dadosEficiencia()
  });
