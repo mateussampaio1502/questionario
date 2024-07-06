@@ -4,6 +4,7 @@ import {db} from '../back-end/firebase.js'
 
 const graficoCidades = document.getElementById('graficoCidades');
 const graficoHorariosDiasUteis = document.getElementById('graficoHorariosDiasUteis');
+const graficoHorariosFeriadosFDS = document.getElementById('graficoHorariosFeriadosFDS');
 const getBtn = document.getElementById('getBtn');
 const testeBtn = document.getElementById('testeBtn');
 const refreshBtn = document.getElementById('refreshBtn');
@@ -48,7 +49,7 @@ const dadosSubgrupos = async () => {
         quantidades: subgroups.map(subgroup => subgroup[1])
     };
 }
-//Dados disponíveis para subgrupos: [nomes, quantidades], [nomes], [quantidades]
+//Dados disponíveis para horários em dias úteis: [pessoasEmCasa, quantidadeTotalDeMembros]
 const dadosHorariosDiasUteis = async () => {
     const querySnapshot = await db.collection(TABELA_CADASTROS).get();
     const totalHoras = 24;
@@ -95,6 +96,51 @@ const dadosHorariosDiasUteis = async () => {
     };
 }
 
+const dadosHorariosFeriadosFDS= async () => {
+    const querySnapshot = await db.collection(TABELA_CADASTROS).get();
+    const totalHoras = 24;
+    const pessoasEmCasa = Array(totalHoras).fill(0);
+    let datasets = [];
+    let quantidadeTotalDeMembros = 0;
+
+    querySnapshot.forEach((doc) => {
+        let dados = doc.data().horariosFeriadosFDS;
+        dados = JSON.parse(dados)
+        //console.log(dados)
+        quantidadeTotalDeMembros++;
+        for(let i = 0; i < dados.length; i++){
+            for (let hora = 0; hora < totalHoras; hora++) {
+                //console.log(dados)
+                if (dados[i][hora]) {
+                    pessoasEmCasa[hora]++;
+                }
+            }
+        }
+        datasets.push(dados);
+    });
+    const horarioSet = []
+    for(let i in datasets){ //cada pesquisado
+        const horariosDoPesquisado = []
+        for(let j in datasets[i]){ //cada morador
+            for(let k in datasets[i][j]){ //cada hora
+                if(datasets[i][j][k]){
+                    horariosDoPesquisado[k] = (horariosDoPesquisado[k] || 0)+ 1;
+                } else{
+                    horariosDoPesquisado[k] = (horariosDoPesquisado[k] || 0) + 0;
+                }
+               // console.log(datasets[i][j][k])
+            }
+            
+        }
+        horarioSet.push(horariosDoPesquisado)
+
+    }
+    return {
+        pessoasEmCasa: horarioSet,
+        quantidadeTotalDeMembros: quantidadeTotalDeMembros
+    };
+}
+
 const randomColor = () => {
     const r = Math.floor(Math.random() * 156 + 100); // Parte vermelha
     const g = Math.floor(Math.random() * 156 + 100); // Verde
@@ -134,6 +180,8 @@ refreshBtn.addEventListener('click', async () => {
             }
         }
     });
+
+    //Gráfico de horários em dias úteis
     const contatos = (await dadosCidades()).listaDeContatos
     new Chart(graficoHorariosDiasUteis, {
         type: 'bar',
@@ -168,9 +216,43 @@ refreshBtn.addEventListener('click', async () => {
             }
         }
     });
+
+    //Gráfico de horários em feriados e fim de semana
+    new Chart(graficoHorariosFeriadosFDS, {
+        type: 'bar',
+        data: {
+            labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+            datasets: (await dadosHorariosFeriadosFDS()).pessoasEmCasa.map((item, index)=>{
+                const color = randomColor()
+                console.log(contatos[index])
+                return {
+                    label: contatos[index] + " - Moradores",
+                    data: item,
+                    backgroundColor: color.backgroundColor,
+                    borderColor: color.borderColor,
+                    borderWidth: 1
+                }
+            })
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Horários em casa Feriados/Fim de Semana'
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        }
+    });
 })
 testeBtn.addEventListener('click', async () => {
     //Por exemplo, quero pegar o retorno da função dadosCidades e fazer algo com ele, sem receber undefined
-    const dados = (await dadosHorariosDiasUteis())
-    console.log(dados.pessoasEmCasa)
+    console.log('asd')
  });
