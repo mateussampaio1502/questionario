@@ -11,6 +11,11 @@
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
     <script src="../back-end/app.js" type="module"></script>
+
+    <!--SweetAlert2 conection-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -221,7 +226,16 @@
             let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text
             let index = eletroSelect.selectedIndex
             if (index == 0) {
-                alert("Selecione uma opção válida")
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação inválida!',
+                    text: 'Escolha uma opção válida!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             } else {
                 newRow.insertCell().textContent = selectedEletro
                 for (let i = 0; i < 24; i++) {
@@ -243,7 +257,16 @@
             if (length > 1) {
                 tbody.deleteRow(length - 1)
             } else {
-                alert('Não há eletrodomésticos para remover')
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação inválida!',
+                    text: 'Não há eletrodomésticos para remover!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             }
         }
 
@@ -255,7 +278,16 @@
             let selectedEletro = eletroSelect.options[eletroSelect.selectedIndex].text
             let index = eletroSelect.selectedIndex
             if (index == 0) {
-                alert("Selecione uma opção válida")
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação inválida!',
+                    text: 'Escolha uma opção válida!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             } else {
                 newRow.insertCell().textContent = selectedEletro
                 for (let i = 0; i < 24; i++) {
@@ -277,7 +309,16 @@
             if (length > 1) {
                 tbody.deleteRow(length - 1)
             } else {
-                alert('Não há eletrodomésticos para remover')
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação inválida!',
+                    text: 'Não há eletrodomésticos para remover!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             }
         }
 
@@ -290,7 +331,16 @@
             let hora = Number(document.getElementById("hora").value)
 
             if (index == 0 || qtd <= 0 || hora <= 0) {
-                alert('Há algo errado! Verifique os dados e tente novamente.')
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação inválida!',
+                    text: 'Verifique os dados e tente novamente',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             } else {
                 let newRow = tbody.insertRow()
                 newRow.insertCell().textContent = selectedEletro
@@ -308,7 +358,16 @@
             if (length > 1) {
                 tbody.deleteRow(length - 1)
             } else {
-                alert('Não há eletrodomésticos para remover')
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação inválida!',
+                    text: 'Não há eletrodomésticos para remover!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             }
         }
 
@@ -326,7 +385,16 @@
                 data.push({ equipamento: equipamento, horas: horas });
             }
             localStorage.setItem("dados_eletro", JSON.stringify(data));
-            alert("Dados de dias úteis salvos com sucesso!");
+            Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Operação bem sucedida!',
+                    text: 'Os dados foram salvos com sucesso!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
         }
 
 
@@ -343,7 +411,16 @@
                 data_weekend.push({ equipamento: equipamento, horas: horas });
             }
             localStorage.setItem("dados_eletro_weekend", JSON.stringify(data_weekend));
-            alert("Dados de finais de semana salvos com sucesso!");
+            Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Operação bem sucedida!',
+                    text: 'Os dados foram salvos com sucesso!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
         }
 
         function salvarDadosEletroEsp() {
@@ -356,7 +433,16 @@
                 data_esp.push({ equipamento: equipamento, quantidade: quantidade, tempo: tempo });
             }
             localStorage.setItem("dados_eletro_esp", JSON.stringify(data_esp));
-            alert("Dados de equipamentos especiais salvos com sucesso!");
+            Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Operação bem sucedida!',
+                    text: 'Os dados foram salvos com sucesso!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
         }
 
 
@@ -408,6 +494,16 @@
                     horaCell.textContent = item.tempo;
                 });
             }
+            Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'time',
+                    title: 'Continue de onde parou.',
+                    text: 'Seu progresso foi salvo!',
+                    showConfirmButton: true,
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
         }
 
         window.onload = function () {

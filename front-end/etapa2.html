@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>Formulário</title>
+
+    <!--SweetAlert2 conection-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
     <header>
@@ -58,7 +62,6 @@
         <p>Mateus Sampaio &reg;</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const detailed = document.querySelectorAll('.tempo-de-uso, .falhas-mec, .falhas-elet, .man-periodo');
         detailed.forEach(element => {
@@ -119,10 +122,19 @@
 
                 localStorage.setItem('dadosEficiencia', JSON.stringify(dados));
                 Swal.fire({
-                    title: 'Dados Salvos!',
-                    text: 'Seus dados foram salvos com sucesso.',
-                    icon: 'success'
-                });
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Operação bem sucedida!',
+                    text: 'Dados salvos com sucesso!',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
                 
                
             } else {
@@ -145,9 +157,19 @@
                 if (dados.nivelManutencao === 'A') document.getElementById('nivel-A').checked = true;
                 else if (dados.nivelManutencao === 'B') document.getElementById('nivel-B').checked = true;
             }
+            Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'time',
+                    title: 'Continue de onde parou.',
+                    text: 'Seu progresso foi salvo!',
+                    showConfirmButton: true,
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
         }
 
-        window.onload = carregarDados;
+        window.onload = carregarDados();
     </script>
 </body>
 </html>

@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Formulário</title>
+    <title>Formulário</title>   
+
+    <!--SweetAlert2 conection-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
     <header>
@@ -145,7 +150,16 @@
                 tbody.deleteRow(length - 1);
                 c--;
             } else {
-                alert('Não há membros para remover!');
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação inválida!',
+                    text: 'Não há membros para remover!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             }
         }
 
@@ -177,7 +191,16 @@
                 tbody.deleteRow(length - 1);
                 c_fds--;
             } else {
-                alert('Não há membros para remover!');
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação inválida!',
+                    text: 'Não há membros para remover!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
             }
         }
 
@@ -197,7 +220,20 @@
                 }
                 data.push(rowData);
             }
-            window.alert('Os dados foram salvos!');
+            Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Operação bem sucedida!',
+                    text: 'Dados salvos com sucesso!',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
             localStorage.setItem(keyPrefix, JSON.stringify(data));
         }
 
@@ -222,6 +258,16 @@
                     cell.appendChild(checkbox);
                 }
             }
+            Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'time',
+                    title: 'Continue de onde parou.',
+                    text: 'Seu progresso foi salvo!',
+                    showConfirmButton: true,
+                    timer: 1500,
+                    timerProgressBar: true,
+                });
         }
 
         window.onload = function () {
