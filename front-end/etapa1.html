@@ -70,7 +70,7 @@
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 
 <script>
@@ -88,22 +88,25 @@
                 contato: contato
             };
 
-            localStorage.setItem('dadosFormulario', JSON.stringify(dados));
-            alert('Dados salvos com sucesso!');
-        } else {
-            alert('Por favor, preencha todos os campos.');
-        }
+        localStorage.setItem('dadosPessoais', JSON.stringify(dados));
+        alert('Dados salvos com sucesso!');
+    } else {
+        alert('Por favor, preencha todos os campos.');
     }
+}
 
-    function carregarDados() {
-        const dados = JSON.parse(localStorage.getItem('dadosFormulario'));
-        if (dados) {
-            document.getElementById('cidade').value = dados.cidade;
-            document.getElementById('subgrupo').value = dados.subgrupo;
-            document.getElementById('nome').value = dados.nome;
-            document.getElementById('contato').value = dados.contato;
-        }
+function carregarDados() {
+    const dados = JSON.parse(localStorage.getItem('dadosPessoais'));
+    if (dados) {
+        document.getElementById('cidade').value = dados.cidade;
+        document.getElementById('subgrupo').value = dados.subgrupo;
+        //@TODO
+        //Corrigir pra pegar os dados dos nomes e contatos das pessoas
+        //document.getElementById('text').value = dados.contato;
+        document.getElementById('nome').value = dados.nome;
+        document.getElementById('contato').value = dados.contato;
     }
+}
 
     window.onload = carregarDados;
 </script>

@@ -106,10 +106,10 @@
     
     <div class="nav">
         <button>
-            <a href="etapa2.html" rel="previous" onclick="saveData('tbody_pessoas', 'dias_uteis'); saveData('tbody_pessoas_fds', 'fds_feriados')">Voltar</a>
+            <a href="etapa2.html" rel="previous" onclick="saveData('tbody_pessoas', 'horariosDiasUteis'); saveData('tbody_pessoas_fds', 'horariosFeriadosFDS')">Voltar</a>
         </button>
         <button>
-            <a href="etapa4.html" rel="next" onclick="saveData('tbody_pessoas', 'dias_uteis'); saveData('tbody_pessoas_fds', 'fds_feriados')">Próximo</a>
+            <a href="etapa4.html" rel="next" onclick="saveData('tbody_pessoas', 'horariosDiasUteis'); saveData('tbody_pessoas_fds', 'horariosFeriadosFDS')">Próximo</a>
         </button>
     </div>
     <footer>
@@ -132,7 +132,7 @@
                 let checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
                 checkbox.name = `membro${c}[${i}h]`;
-                checkbox.id = `membro${c}[${i}h]`;
+                checkbox.id = `${i}`;
                 cell.appendChild(checkbox);
             }
         }
@@ -164,7 +164,7 @@
                 let checkbox = document.createElement("input");
                 checkbox.type = "checkbox";
                 checkbox.name = `membro${c_fds}_fds[${i}h]`;
-                checkbox.id = `membro${c_fds}_fds[${i}h]`;
+                checkbox.id = `${i}`;
                 cell.appendChild(checkbox);
             }
         }
@@ -225,16 +225,16 @@
         }
 
         window.onload = function () {
-            loadData('tbody_pessoas', 'dias_uteis');
-            loadData('tbody_pessoas_fds', 'fds_feriados');
+            loadData('tbody_pessoas', 'horariosDiasUteis');
+            loadData('tbody_pessoas_fds', 'horariosFeriadosFDS');
         };
 
         document.getElementById('savebutton').addEventListener('click', function () {
-            saveData('tbody_pessoas', 'dias_uteis');
+            saveData('tbody_pessoas', 'horariosDiasUteis');
         });
 
         document.getElementById('savebutton_fds').addEventListener('click', function () {
-            saveData('tbody_pessoas_fds', 'fds_feriados');
+            saveData('tbody_pessoas_fds', 'horariosFeriadosFDS');
         });
 
     </script>
