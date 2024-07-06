@@ -45,6 +45,19 @@ div.campo p {
     line-height: 1.2em;
 }
 
+div.campo .tempo-de-uso, .falhas-mec, .falhas-elet, .man-periodo {
+    cursor: pointer;
+    color: var(--cor-destaque);
+}
+
+div.campo .tempo-de-uso::after, .falhas-mec::after, .falhas-elet::after, .man-periodo::after {
+    cursor: pointer;
+    content: '🛈';
+    color: var(--cor-campo-ativo);
+    margin: 0 2px;
+    font-size: 1.2em;
+}
+
 div.campo p.required::after {
     content: ' *';
     color: red;

@@ -4,108 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>Formulário</title>
 </head>
 <body>
     <header>
-        <h1>ANÁLISE DE GRUPO</h1>
+        <h1>ANÁLISE DE EFICIÊNCIA ENERGÉTICA</h1>
     </header>
     <div class="campo">
-        <p>Nesta seção estaremos coletando alguns dados cadastrais para que possamos identificar as respostas no futuro, não se preocupe, nenhum dado sensível será questionado e mesmo os dados aqui solicitados serão protegidos e guardados para qualquer um de fora da equipe.</p>
+        <p>Nesta etapa, estamos buscando entender o nível de eficiência energética da rede e dos dispositivos ligados nela.</p>
         <p id="obg">* Indica uma pergunta obrigatória</p>
     </div>
-    <div class="campo" id="p1">
-        <p class="required">Em qual cidade você Reside?</p>
-        <select name="cidade" id="cidade">
-            <option value="" selected disabled>Selecione uma cidade</option>
-            <option value="cabaceiras">Cabaceiras do Paraguaçu</option>
-            <option value="cachoeira">Cachoeira</option>
-            <option value="cruz_das_almas">Cruz das Almas</option>
-            <option value="dom_macedo_costa">Dom Macedo Costa</option>
-            <option value="governador_mangabeira">Governador Mangabeira</option>
-            <option value="maragogipe">Maragogipe</option>
-            <option value="muniz_ferreira">Muniz Ferreira</option>
-            <option value="muritiba">Muritiba</option>
-            <option value="nazare">Nazaré</option>
-            <option value="santo_amaro">Santo Amaro</option>
-            <option value="santo_antonio">Santo Antônio de Jesus</option>
-            <option value="sao_felipe">São Felipe</option>
-            <option value="sao_felix">São Félix</option>
-            <option value="sao_francisco_conde">São Francisco do Conde</option>
-            <option value="sao_francisco_passe">São Francisco do Passé</option>
-            <option value="sapeacu">Sapeaçu</option>
-            <option value="saubara">Saubara</option>
-            <option value="varzedo">Varzedo</option>
-            <option value="outro">Outro</option>
-        </select>
-    </div>
-    <div class="campo" id="p2">
-        <p class="required">A qual subgrupo amostral você e/ou seu grupo de convívio pertencem?</p>
-        <select name="subgrupo" id="subgrupo">
-        <option value="" selected disabled>Selecione seu grupo</option>
-        <option value="solteiro_A">Solteiro com emprego presencial</option>
-        <option value="solteiro_B">Solteiro com emprego home office</option>
-        <option value="solteiro_C">Solteiro aposentado</option>
-        <option value="casal_A">Casal sem filhos</option>
-        <option value="casal_B">Casal aposentado</option>
-        <option value="casal_C">Casal com filhos</option>
-        <option value="solteiro_D">Mãe ou pai solteiros</option>
-        <option value="residencia_estudantil">Residência estudantil</option>
-        <option value="outro">Outro</option>
-        </select>
-    </div>
-    <div class="campo" id="p3">
-        <p>Informe seu nome ou um pseudônimo para que possamos identificá-lo na nossa análise estatística.</p>
-        <textarea name="nome" id="nome" rows="1"></textarea>
-    </div>
     <div class="campo" id="p4">
-        <p>Informe seu email (ou número de telefone) para que possamos entrar em contato caso concorde em ser consultado sobre suas respostas (Isso só será feito caso hajam dúvidas acerca de algumas das respostas fornecidas).</p>
-        <textarea name="contato" id="contato" rows="1"></textarea>
+        <p class="required">Considerando os parâmetros fornecidos abaixo, avalie o nível de qualidade de seus eletrodomésticos no que diz respeito a tempo de uso e funcionamento.</p>
+        <ul type="none">
+            <li>1) Eficiência dos aparelhos eletrodomésticos.</li>
+            <li>Nível A - Os equipamentos apresentam pouco <strong class="tempo-de-uso">tempo de uso</strong> e funcionam satisfatoriamente.</li>
+            <li>Nível B - Os equipamentos apresentam <strong class="tempo-de-uso">tempo considerável de uso</strong>, mas funcionam satisfatoriamente.</li>
+            <li>Nível C - Os equipamentos apresentam pouco <strong class="tempo-de-uso">tempo de uso</strong>, mas apresentam algumas <strong class="falhas-mec">falhas mecânicas</strong> e/ou <strong class="falhas-elet">eletrônicas</strong>.</li>
+            <li>Nível D - Os equipamentos apresentam <strong class="tempo-de-uso">tempo considerável de uso</strong> e apresentam <strong class="falhas-mec">falhas mecânicas</strong> e/ou <strong class="falhas-elet">eletrônicas</strong> ou os equipamentos excederam sua vida útil.</li>
+        </ul>
+        <input type="radio" name="option" id="nivel-a">
+        <label for="nivel-a">Nível A</label><br>
+        <input type="radio" name="option" id="nivel-b">
+        <label for="nivel-b">Nível B</label><br>
+        <input type="radio" name="option" id="nivel-c">
+        <label for="nivel-c">Nível C</label><br>
+        <input type="radio" name="option" id="nivel-d">
+        <label for="nivel-d">Nível D</label><br>
+    </div>
+    <div class="campo" id="p5">
+        <p class="required">Considerando o parâmetro abaixo, avalie sua residência no que diz respeito à <strong class="man-periodo">periodicidade de manutenções.</strong></p>
+        <ul type="none">
+            <li>A - São feitas manutenções periódicas baseadas numa periodicidade determinada por um profissional.</li>
+            <li>B - Não são feitas manutenções, a menos que seja identificado algum problema sério nas instalações.</li>
+        </ul>
+        
+        <input type="radio" name="option2" id="nivel-A">
+        <label for="nivel-A">Nível A</label><br>
+        <input type="radio" name="option2" id="nivel-B">
+        <label for="nivel-B">Nível B</label><br>
     </div>
     <div class="nav">
-        <button><a href="etapa0.html">Voltar</a></button>
-        <button onclick="salvarDados()"><a href="etapa2.html">Próximo</a></button>
+        <button>
+            <a href="etapa1.html" rel="previous" onclick="salvarDados()">Voltar</a>
+        </button>
+        <button>
+            <a href="etapa3.html" onclick="salvarDados()">Próximo</a>
+        </button>
         <input type="button" value="Salvar" class="save" onclick="salvarDados()">
     </div>
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
-    <script src="script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const detailed = document.querySelectorAll('.tempo-de-uso, .falhas-mec, .falhas-elet, .man-periodo');
+        detailed.forEach(element => {
+            element.addEventListener('click', detail);
+        });
+
+        function detail(event) {
+            if (event.target.classList.contains('tempo-de-uso')) {
+                Swal.fire({
+                    title: 'Detalhamento do tempo de uso',
+                    html: '<ul type="none"><li>a) Até 5 anos: Pouco tempo de uso.</li><li>b) Até 10 anos: Tempo considerável de uso.</li><li>c) Acima de 10 anos: excedeu a vida útil.</li></ul>',
+                    icon: 'info'
+                });
+            } else if (event.target.classList.contains('falhas-mec')) {
+                Swal.fire({
+                    title: 'Detalhamento das falhas mecânicas',
+                    html: '<ul type="none"><li>a) Ruídos anormais durante o funcionamento do equipamento.</li><li>b) Vazamentos de água, óleo ou outros fluidos.</li> <li>c) Problemas de vedação que causam escape de vapor ou ar.</li> <li>d) Dificuldades na abertura ou fechamento de compartimentos.</li> <li>e) Quebras visíveis em peças estruturais, como carcaças, portas, alças, etc.</li> <li>f) Desgaste excessivo em componentes móveis, como rolamentos, engrenagens, etc.</li></ul>',
+                    icon: 'info'
+                });
+            } else if (event.target.classList.contains('falhas-elet')) {
+                Swal.fire({
+                    title: 'Detalhamento das falhas eletrônicas',
+                    html: '<ul type="none"><li>a) Desligamentos repentinos ou intermitentes do equipamento.</li><li>b) Falhas no display ou nos controles digitais, como botões que não respondem ou mostradores com informações incorretas.</li><li>c) Erros de funcionamento ao selecionar modos ou configurações específicas.</li><li>d) Problemas de aquecimento ou superaquecimento de componentes eletrônicos.</li><li>e) Curto circuitos evidentes, faíscas ou cheiro de queimado.</li><li>f) Interferências na conexão com outros dispositivos, como falhas de comunicação em sistemas integrados.</li></ul>',
+                    icon: 'info'
+                });
+            } else if (event.target.classList.contains('man-periodo')){
+                swal.fire({
+                    title: 'Periodicidade das manutenções',
+                    html: '<ul type="none"><li>Eficiência das instalações elétricas.</li><br><li>No que diz respeito à periodicidade das manutenções de uma instalação elétrica, esta é personalizada e varia de acordo com as condições climáticas, a necessidade de potência e a complexidade das instalações (NBR5410, p. 168, 2004). Quanto mais adversas as condições e maior a necessidade de carga, menor o período entre manutenções, porém quanto mais complexos os sistemas, maior deve ser o período. Além disso, esse valor de periodicidade deve ser estimado baseado nas prescrições da norma.</li></ul>',
+                    icon: 'info'
+                })
+            }
+        }
+
+        function salvarDados() {
+            const nivelA = document.getElementById('nivel-a').checked;
+            const nivelB = document.getElementById('nivel-b').checked;
+            const nivelC = document.getElementById('nivel-c').checked;
+            const nivelD = document.getElementById('nivel-d').checked;
+            const nivelA2 = document.getElementById('nivel-A').checked;
+            const nivelB2 = document.getElementById('nivel-B').checked;
+
+            let nivel = '';
+            if (nivelA) nivel = 'A';
+            else if (nivelB) nivel = 'B';
+            else if (nivelC) nivel = 'C';
+            else if (nivelD) nivel = 'D';
+
+            let nivel2 = '';
+            if (nivelA2) nivel2 = 'A';
+            else if (nivelB2) nivel2 = 'B';
+
+            if (nivel && nivel2) {
+                const dados = {
+                    nivel: nivel,
+                    nivel2: nivel2
+                };
+
+                localStorage.setItem('dadosFormulario2', JSON.stringify(dados));
+                Swal.fire({
+                    title: 'Dados Salvos!',
+                    text: 'Seus dados foram salvos com sucesso.',
+                    icon: 'success'
+                });
+            } else {
+                Swal.fire({
+                    title: 'Campos Incompletos',
+                    text: 'Por favor, preencha todos os campos.',
+                    icon: 'warning'
+                });
+            }
+        }
+
+        function carregarDados() {
+            const dados = JSON.parse(localStorage.getItem('dadosFormulario2'));
+            if (dados) {
+                if (dados.nivel === 'A') document.getElementById('nivel-a').checked = true;
+                else if (dados.nivel === 'B') document.getElementById('nivel-b').checked = true;
+                else if (dados.nivel === 'C') document.getElementById('nivel-c').checked = true;
+                else if (dados.nivel === 'D') document.getElementById('nivel-d').checked = true;
+
+                if (dados.nivel2 === 'A') document.getElementById('nivel-A').checked = true;
+                else if (dados.nivel2 === 'B') document.getElementById('nivel-B').checked = true;
+            }
+        }
+
+        window.onload = carregarDados;
+    </script>
 </body>
-
-<script>
-    function salvarDados() {
-        const cidade = document.getElementById('cidade').value;
-        const subgrupo = document.getElementById('subgrupo').value;
-        const nome = document.getElementById('nome').value;
-        const contato = document.getElementById('contato').value;
-
-        if (cidade && subgrupo && nome && contato) {
-            const dados = {
-                cidade: cidade,
-                subgrupo: subgrupo,
-                nome: nome,
-                contato: contato
-            };
-
-            localStorage.setItem('dadosFormulario', JSON.stringify(dados));
-            alert('Dados salvos com sucesso!');
-        } else {
-            alert('Por favor, preencha todos os campos.');
-        }
-    }
-
-    function carregarDados() {
-        const dados = JSON.parse(localStorage.getItem('dadosFormulario'));
-        if (dados) {
-            document.getElementById('cidade').value = dados.cidade;
-            document.getElementById('subgrupo').value = dados.subgrupo;
-            document.getElementById('nome').value = dados.nome;
-            document.getElementById('contato').value = dados.contato;
-        }
-    }
-
-    window.onload = carregarDados;
-</script>
-
 </html>

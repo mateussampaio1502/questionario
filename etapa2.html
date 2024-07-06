@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>Formulário</title>
 </head>
 <body>
@@ -15,59 +16,34 @@
         <p id="obg">* Indica uma pergunta obrigatória</p>
     </div>
     <div class="campo" id="p4">
-        <p class="required">Considerando os parâmetros fornecidos a abaixo, avalie o nível de qualidade de seus eletrodoméstico no que diz respeito a tempo de uso e funcionamento.</p>
+        <p class="required">Considerando os parâmetros fornecidos abaixo, avalie o nível de qualidade de seus eletrodomésticos no que diz respeito a tempo de uso e funcionamento.</p>
         <ul type="none">
-            <li>1) Eficiência dos aparelhos eletrodomésticos.</li> 
-            <li>A - Os equipamentos apresentam pouco tempo de uso e funcionam satisfatoriamente.</li> 
-            <li>B - Os equipamentos apresentam tempo considerável de uso, mas funcionam satisfatoriamente.</li> 
-            <li>C - Os equipamentos apresentam pouco tempo de uso, mas apresentam algumas falhas mecânicas e/ou eletrônicas.</li>
-            <li>D - Os equipamentos apresentam tempo considerável de uso e apresentam falhas mecânicas e/ou eletrônicas ou os equipamentos excederam sua vida útil.</li> <br>
-        </ul>
-        <ul type="none">
-            <li>Das falhas mecânicas: </li>
-            <li>a) Ruídos anormais durante o funcionamento do equipamento.</li>
-            <li>b) Vazamentos de água, óleo ou outros fluidos.</li> 
-            <li>c) Problemas de vedação que causam escape de vapor ou ar.</li> 
-            <li>d) Dificuldades na abertura ou fechamento de compartimentos.</li> 
-            <li>e) Quebras visíveis em peças estruturais, como carcaças, portas, alças, etc.</li> 
-            <li>f) Desgaste excessivo em componentes móveis, como rolamentos, engrenagens, etc.</li> <br>
-        </ul>
-        <ul type="none">
-            <li>Das falhas elétricas:</li> 
-            <li>a) Desligamentos repentinos ou intermitentes do equipamento.</li> 
-            <li>b) Falhas no display ou nos controles digitais, como botões que não respondem ou mostradores com informações incorretas.</li> 
-            <li>c) Erros de funcionamento ao selecionar modos ou configurações específicas.</li> 
-            <li>d) Problemas de aquecimento ou superaquecimento de componentes eletrônicos.</li> 
-            <li>e) Curto circuitos evidentes, faíscas ou cheiro de queimado.</li> 
-            <li>f) Interferências na conexão com outros dispositivos, como falhas de comunicação em sistemas integrados.</li> <br>
-        </ul>
-        <ul type="none">
-            <li>Detalhamento do tempo de uso (INSTRUÇÃO NORMATIVA SRF Nº 162, DE 31 DE DEZEMBRO DE 1998): </li>
-            <li>a) Até 5 anos: Pouco tempo de uso.</li> 
-            <li>b) Até 10 anos: Tempo considerável de uso.</li> 
-            <li>c) Acima de 10 anos: excedeu a vida útil.</li> <br>
+            <li>1) Eficiência dos aparelhos eletrodomésticos.</li>
+            <li>Nível A - Os equipamentos apresentam pouco <strong class="tempo-de-uso">tempo de uso</strong> e funcionam satisfatoriamente.</li>
+            <li>Nível B - Os equipamentos apresentam <strong class="tempo-de-uso">tempo considerável de uso</strong>, mas funcionam satisfatoriamente.</li>
+            <li>Nível C - Os equipamentos apresentam pouco <strong class="tempo-de-uso">tempo de uso</strong>, mas apresentam algumas <strong class="falhas-mec">falhas mecânicas</strong> e/ou <strong class="falhas-elet">eletrônicas</strong>.</li>
+            <li>Nível D - Os equipamentos apresentam <strong class="tempo-de-uso">tempo considerável de uso</strong> e apresentam <strong class="falhas-mec">falhas mecânicas</strong> e/ou <strong class="falhas-elet">eletrônicas</strong> ou os equipamentos excederam sua vida útil.</li>
         </ul>
         <input type="radio" name="option" id="nivel-a">
-        <label for="nivel-a">Nível  A</label> <br>
+        <label for="nivel-a">Nível A</label><br>
         <input type="radio" name="option" id="nivel-b">
-        <label for="nivel-b">Nível B</label> <br>
+        <label for="nivel-b">Nível B</label><br>
         <input type="radio" name="option" id="nivel-c">
-        <label for="nivel-c">Nível C</label> <br>
+        <label for="nivel-c">Nível C</label><br>
         <input type="radio" name="option" id="nivel-d">
-        <label for="nivel-d">Nível D</label> <br>
+        <label for="nivel-d">Nível D</label><br>
     </div>
     <div class="campo" id="p5">
-        <p class="required">considerando o parâmetro abaixo, avalie sua residência no que diz respeito à periodicidade de manutenções.</p>
+        <p class="required">Considerando o parâmetro abaixo, avalie sua residência no que diz respeito à <strong class="man-periodo">periodicidade de manutenções.</strong></p>
         <ul type="none">
-            <li>Eficiência das instalações elétricas.</li>
-            <li>No que diz respeito à periodicidade das manutenções de uma instalação elétrica, esta é personalizada e varia de acordo com as condições climáticas, a necessidade de potência e a complexidade das instalações (NBR5410, p. 168, 2004). Quanto mais adversas as condições e maior a necessidade de carga, menor o período entre manutenções, porém quanto mais complexos os sistemas, maior deve ser o período. Além disso, esse valor de periodicidade, deve ser estimado baseado nas prescrições da norma.</li>
             <li>A - São feitas manutenções periódicas baseadas numa periodicidade determinada por um profissional.</li>
             <li>B - Não são feitas manutenções, a menos que seja identificado algum problema sério nas instalações.</li>
         </ul>
+        
         <input type="radio" name="option2" id="nivel-A">
-        <label for="nivel-A">Nível  A</label> <br>
+        <label for="nivel-A">Nível A</label><br>
         <input type="radio" name="option2" id="nivel-B">
-        <label for="nivel-B">Nível B</label> <br>
+        <label for="nivel-B">Nível B</label><br>
     </div>
     <div class="nav">
         <button>
@@ -82,7 +58,41 @@
         <p>Mateus Sampaio &reg;</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        const detailed = document.querySelectorAll('.tempo-de-uso, .falhas-mec, .falhas-elet, .man-periodo');
+        detailed.forEach(element => {
+            element.addEventListener('click', detail);
+        });
+
+        function detail(event) {
+            if (event.target.classList.contains('tempo-de-uso')) {
+                Swal.fire({
+                    title: 'Detalhamento do tempo de uso',
+                    html: '<ul type="none"><li>a) Até 5 anos: Pouco tempo de uso.</li><li>b) Até 10 anos: Tempo considerável de uso.</li><li>c) Acima de 10 anos: excedeu a vida útil.</li></ul>',
+                    icon: 'info'
+                });
+            } else if (event.target.classList.contains('falhas-mec')) {
+                Swal.fire({
+                    title: 'Detalhamento das falhas mecânicas',
+                    html: '<ul type="none"><li>a) Ruídos anormais durante o funcionamento do equipamento.</li><li>b) Vazamentos de água, óleo ou outros fluidos.</li> <li>c) Problemas de vedação que causam escape de vapor ou ar.</li> <li>d) Dificuldades na abertura ou fechamento de compartimentos.</li> <li>e) Quebras visíveis em peças estruturais, como carcaças, portas, alças, etc.</li> <li>f) Desgaste excessivo em componentes móveis, como rolamentos, engrenagens, etc.</li></ul>',
+                    icon: 'info'
+                });
+            } else if (event.target.classList.contains('falhas-elet')) {
+                Swal.fire({
+                    title: 'Detalhamento das falhas eletrônicas',
+                    html: '<ul type="none"><li>a) Desligamentos repentinos ou intermitentes do equipamento.</li><li>b) Falhas no display ou nos controles digitais, como botões que não respondem ou mostradores com informações incorretas.</li><li>c) Erros de funcionamento ao selecionar modos ou configurações específicas.</li><li>d) Problemas de aquecimento ou superaquecimento de componentes eletrônicos.</li><li>e) Curto circuitos evidentes, faíscas ou cheiro de queimado.</li><li>f) Interferências na conexão com outros dispositivos, como falhas de comunicação em sistemas integrados.</li></ul>',
+                    icon: 'info'
+                });
+            } else if (event.target.classList.contains('man-periodo')){
+                swal.fire({
+                    title: 'Periodicidade das manutenções',
+                    html: '<ul type="none"><li>Eficiência das instalações elétricas.</li><br><li>No que diz respeito à periodicidade das manutenções de uma instalação elétrica, esta é personalizada e varia de acordo com as condições climáticas, a necessidade de potência e a complexidade das instalações (NBR5410, p. 168, 2004). Quanto mais adversas as condições e maior a necessidade de carga, menor o período entre manutenções, porém quanto mais complexos os sistemas, maior deve ser o período. Além disso, esse valor de periodicidade deve ser estimado baseado nas prescrições da norma.</li></ul>',
+                    icon: 'info'
+                })
+            }
+        }
+
         function salvarDados() {
             const nivelA = document.getElementById('nivel-a').checked;
             const nivelB = document.getElementById('nivel-b').checked;
@@ -108,9 +118,17 @@
                 };
 
                 localStorage.setItem('dadosFormulario2', JSON.stringify(dados));
-                alert('Dados salvos com sucesso!');
+                Swal.fire({
+                    title: 'Dados Salvos!',
+                    text: 'Seus dados foram salvos com sucesso.',
+                    icon: 'success'
+                });
             } else {
-                alert('Por favor, preencha todos os campos.');
+                Swal.fire({
+                    title: 'Campos Incompletos',
+                    text: 'Por favor, preencha todos os campos.',
+                    icon: 'warning'
+                });
             }
         }
 
@@ -129,6 +147,5 @@
 
         window.onload = carregarDados;
     </script>
-
 </body>
 </html>
