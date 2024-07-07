@@ -7,8 +7,8 @@ const graficoHorariosDiasUteis = document.getElementById('graficoHorariosDiasUte
 const graficoHorariosFeriadosFDS = document.getElementById('graficoHorariosFeriadosFDS');
 const graficoEficiencia = document.getElementById('graficoEficiencia');
 const graficoManutencao = document.getElementById('graficoManutencao');
-const ctx = document.getElementById('myChart').getContext('2d');
-
+const graficoDadosEletro = document.getElementById('dados_eletro');
+const graficoDadosEletroFDS = document.getElementById('dados_eletro_fds');
 const getBtn = document.getElementById('getBtn');
 const testeBtn = document.getElementById('testeBtn');
 const refreshBtn = document.getElementById('refreshBtn');
@@ -170,7 +170,7 @@ const dadosEficiencia = async () => {
     const querySnapshot = await db.collection(TABELA_CADASTROS).get();
     querySnapshot.forEach((doc) => {
         const niveis = JSON.parse(doc.data().dadosEficiencia);
-        console.log(niveis)
+        
         switch (niveis.nivelEficiencia) {
             case 'A':
                 nivelEficiencia.push([1, 0, 0, 0]);
@@ -211,6 +211,116 @@ const dadosEficiencia = async () => {
     return {
         nivelEficiencia: nivelEficiencia,
         nivelManutencao: nivelManutencao
+    };
+}
+const dadosEletrodomesticos = async () => {
+    const datasets = [];
+    
+    const querySnapshot = await db.collection(TABELA_CADASTROS).get();
+    const PotenciaMap = {
+        'Air fryer': 1400,
+        'Ar-condicionado': 2000,
+        'Chapa': 1500,
+        'Chuveiro elétrico': 5500,
+        'Computador': 400,
+        'Consoles de videogame': 150,
+        'Forno elétrico': 1800,
+        'Freezer': 300,
+        'Geladeira de 1 porta': 120,
+        'Geladeira de duas portas': 200,
+        'Grelha elétrica': 1400,
+        'Lâmpada fluorescente': 20,
+        'Lâmpada incandescente': 60,
+        'Lâmpada LED': 1,
+        'Liquidificador': 500,
+        'Modem de Wi-Fi': 15,
+        'Televisão': 100,
+        'Ventilador': 50
+    };
+
+    // Inicializa o array para armazenar a potência total de cada hora
+
+    querySnapshot.forEach((doc) => {
+        const potenciaTotalPorHora = Array(24).fill(0);
+        const dados_eletro = JSON.parse(doc.data().dados_eletro);
+        console.log(dados_eletro);
+
+        // Itera sobre cada equipamento
+        dados_eletro.forEach(equipamento => {
+            const nomeEquipamento = equipamento.equipamento;
+            console.log(nomeEquipamento)
+            const horas = equipamento.horas;
+            const potenciaEquipamento = PotenciaMap[nomeEquipamento];
+
+            // Adiciona a potência do equipamento para cada hora correspondente
+            horas.forEach((ligado, hora) => {
+                if (ligado) {
+                    potenciaTotalPorHora[hora] += potenciaEquipamento;
+                }
+            });
+        });
+        datasets.push(potenciaTotalPorHora);
+    });
+
+    console.log('poderes do chat', datasets);
+
+    return {
+        datasets: datasets
+    };
+}
+
+const dadosEletrodomesticosFDS = async () => {
+    const datasets = [];
+    
+    const querySnapshot = await db.collection(TABELA_CADASTROS).get();
+    const PotenciaMap = {
+        'Air fryer': 1400,
+        'Ar-condicionado': 2000,
+        'Chapa': 1500,
+        'Chuveiro elétrico': 5500,
+        'Computador': 400,
+        'Consoles de videogame': 150,
+        'Forno elétrico': 1800,
+        'Freezer': 300,
+        'Geladeira de 1 porta': 120,
+        'Geladeira de duas portas': 200,
+        'Grelha elétrica': 1400,
+        'Lâmpada fluorescente': 20,
+        'Lâmpada incandescente': 60,
+        'Lâmpada LED': 1,
+        'Liquidificador': 500,
+        'Modem de Wi-Fi': 15,
+        'Televisão': 100,
+        'Ventilador': 50
+    };
+
+    // Inicializa o array para armazenar a potência total de cada hora
+
+    querySnapshot.forEach((doc) => {
+        const potenciaTotalPorHora = Array(24).fill(0);
+        const dados_eletro_esp = JSON.parse(doc.data().dados_eletro_weekend);
+        console.log(dados_eletro_esp);
+
+        // Itera sobre cada equipamento
+        dados_eletro_esp.forEach(equipamento => {
+            const nomeEquipamento = equipamento.equipamento;
+            console.log(nomeEquipamento)
+            const horas = equipamento.horas;
+            const potenciaEquipamento = PotenciaMap[nomeEquipamento];
+
+            // Adiciona a potência do equipamento para cada hora correspondente
+            horas.forEach((ligado, hora) => {
+                if (ligado) {
+                    potenciaTotalPorHora[hora] += potenciaEquipamento;
+                }
+            });
+        });
+        datasets.push(potenciaTotalPorHora);
+    });
+
+
+    return {
+        datasets: datasets
     };
 }
 
@@ -381,95 +491,74 @@ refreshBtn.addEventListener('click', async () => {
         }
     });
 
-    //Eletrodomésticos
-    const ctx = document.getElementById('myChart').getContext('2d');
-    // Mock data
-    const data = {
-        datasets: [
-            {
-                label: 'Eletrodoméstico 1',
-                data: [
-                    { x: 8, y: 'Morador 1', r: 10 },
-                    { x: 10, y: 'Morador 2', r: 15 },
-                    { x: 14, y: 'Morador 3', r: 20 }
-                ],
-                backgroundColor: 'rgba(255, 99, 132, 0.5)'
-            },
-            {
-                label: 'Eletrodoméstico 2',
-                data: [
-                    { x: 9, y: 'Morador 1', r: 20 },
-                    { x: 12, y: 'Morador 2', r: 10 },
-                    { x: 18, y: 'Morador 3', r: 15 }
-                ],
-                backgroundColor: 'rgba(54, 162, 235, 0.5)'
-            },
-            {
-                label: 'Eletrodoméstico 3',
-                data: [
-                    { x: 11, y: 'Morador 1', r: 30 },
-                    { x: 16, y: 'Morador 2', r: 25 },
-                    { x: 19, y: 'Morador 3', r: 10 }
-                ],
-                backgroundColor: 'rgba(75, 192, 192, 0.5)'
-            }
-        ]
-    };
-
-    // Define the scales for the x and y axes
-    const options = {
-        scales: {
-            x: {
-                type: 'linear',
-                position: 'bottom',
-                min: 0,
-                max: 23,
-                title: {
-                    display: true,
-                    text: 'Horas'
-                },
-                ticks: {
-                    callback: function(value) {
-                        return value + 'h';
-                    }
+    //Eletrodomésticos DIAS ÚTEIS
+    new Chart(graficoDadosEletro, {
+        type: 'line',
+        data: {
+            labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+            datasets: (await dadosEletrodomesticos()).datasets.map((item, index)=>{
+                const color = randomColor()
+                return {
+                    label: contatosNomes[index] + " - Watts:",
+                    data: item,
+                    backgroundColor: color.backgroundColor,
+                    borderColor: color.borderColor,
+                    borderWidth: 1
                 }
-            },
-            y: {
-                type: 'category',
-                title: {
-                    display: true,
-                    text: 'Moradores'
-                },
-                labels: ['Morador 1', 'Morador 2', 'Morador 3']
+            })
+        },
+        options: {
+            plugins: {
+            title: {
+                display: true,
+                text: 'Curva de potência (P x t) para os eletrodomésticos nos dias úteis'
             }
         },
-        plugins: {
-            legend: {
-                display: true,
-                position: 'top'
-            },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        const label = context.dataset.label || '';
-                        const x = context.raw.x + 'h';
-                        const y = context.raw.y;
-                        const r = context.raw.r;
-                        return `${label}: (${x}, ${y}, Quantidade: ${r})`;
-                    }
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
                 }
             }
         }
-    };
-
-    // Create the chart
-    const myChart = new Chart(ctx, {
-        type: 'bubble',
-        data: data,
-        options: options
+    });
+    //Eletrodomésticos N DIAS ÚTEIS
+    new Chart(graficoDadosEletroFDS, {
+        type: 'line',
+        data: {
+            labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+            datasets: (await dadosEletrodomesticosFDS()).datasets.map((item, index)=>{
+                const color = randomColor()
+                return {
+                    label: contatosNomes[index] + " - Watts: ",
+                    data: item,
+                    backgroundColor: color.backgroundColor,
+                    borderColor: color.borderColor,
+                    borderWidth: 1
+                }
+            })
+        },
+        options: {
+            plugins: {
+            title: {
+                display: true,
+                text: 'Curva de potência (P x t) para os eletrodomésticos nos dias  NÃO úteis'
+            }
+        },
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        }
     });
 })
 testeBtn.addEventListener('click', async () => {
     //Por exemplo, quero pegar o retorno da função dadosCidades e fazer algo com ele, sem receber undefined
-    dadosEficiencia()
+    dadosEletrodomesticos()
  });
