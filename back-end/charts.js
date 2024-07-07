@@ -455,7 +455,7 @@ refreshBtn.addEventListener('click', async () => {
     new Chart(graficoManutencao, {
         type: 'bar',
         data: {
-            labels: ['A', 'B', 'C', 'D'],
+            labels: ['A', 'B'],
             datasets: (await dadosEficiencia()).nivelManutencao.map((item, index)=>{
                 const color = randomColor()
                 return {
