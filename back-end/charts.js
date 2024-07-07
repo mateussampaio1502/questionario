@@ -1,17 +1,19 @@
 import { addDataBtn, TABELA_CADASTROS } from './consts.js'
 import {db} from '../back-end/firebase.js'
+import {PotenciaMap} from './potenciaConfig.js'
+import { graficoCidades,  
+    graficoHorariosDiasUteis,
+    graficoHorariosFeriadosFDS,
+    graficoEficiencia,
+    graficoManutencao,
+    graficoDadosEletro,
+    graficoDadosEletroFDS,
+    getBtn,
+    testeBtn,
+    refreshBtn
+} from './consts.js';
 
 
-const graficoCidades = document.getElementById('graficoCidades');
-const graficoHorariosDiasUteis = document.getElementById('graficoHorariosDiasUteis');
-const graficoHorariosFeriadosFDS = document.getElementById('graficoHorariosFeriadosFDS');
-const graficoEficiencia = document.getElementById('graficoEficiencia');
-const graficoManutencao = document.getElementById('graficoManutencao');
-const graficoDadosEletro = document.getElementById('dados_eletro');
-const graficoDadosEletroFDS = document.getElementById('dados_eletro_fds');
-const getBtn = document.getElementById('getBtn');
-const testeBtn = document.getElementById('testeBtn');
-const refreshBtn = document.getElementById('refreshBtn');
 
 //Dados disponíveis para cidades: [nomes, quantidades], [nomes], [quantidades]
 const dadosCidades = async () => {
@@ -69,11 +71,9 @@ const dadosHorariosDiasUteis = async () => {
     querySnapshot.forEach((doc) => {
         let dados = doc.data().horariosDiasUteis;
         dados = JSON.parse(dados)
-        //console.log(dados)
         quantidadeTotalDeMembros++;
         for(let i = 0; i < dados.length; i++){
             for (let hora = 0; hora < totalHoras; hora++) {
-                //console.log(dados)
                 if (dados[i][hora]) {
                     pessoasEmCasa[hora]++;
                 }
@@ -91,14 +91,12 @@ const dadosHorariosDiasUteis = async () => {
                 } else{
                     horariosDoPesquisado[k] = (horariosDoPesquisado[k] || 0) + 0;
                 }
-               // console.log(datasets[i][j][k])
             }
             
         }
         horarioSet.push(horariosDoPesquisado)
 
     }
-    console.log("precisa de algum identificador único para o morador", horarioSet)
     return {
         pessoasEmCasa: horarioSet,
         quantidadeTotalDeMembros: quantidadeTotalDeMembros
@@ -115,11 +113,9 @@ const dadosHorariosFeriadosFDS= async () => {
     querySnapshot.forEach((doc) => {
         let dados = doc.data().horariosFeriadosFDS;
         dados = JSON.parse(dados)
-        //console.log(dados)
         quantidadeTotalDeMembros++;
         for(let i = 0; i < dados.length; i++){
             for (let hora = 0; hora < totalHoras; hora++) {
-                //console.log(dados)
                 if (dados[i][hora]) {
                     pessoasEmCasa[hora]++;
                 }
@@ -137,7 +133,6 @@ const dadosHorariosFeriadosFDS= async () => {
                 } else{
                     horariosDoPesquisado[k] = (horariosDoPesquisado[k] || 0) + 0;
                 }
-               // console.log(datasets[i][j][k])
             }
             
         }
@@ -217,38 +212,17 @@ const dadosEletrodomesticos = async () => {
     const datasets = [];
     
     const querySnapshot = await db.collection(TABELA_CADASTROS).get();
-    const PotenciaMap = {
-        'Air fryer': 1400,
-        'Ar-condicionado': 2000,
-        'Chapa': 1500,
-        'Chuveiro elétrico': 5500,
-        'Computador': 400,
-        'Consoles de videogame': 150,
-        'Forno elétrico': 1800,
-        'Freezer': 300,
-        'Geladeira de 1 porta': 120,
-        'Geladeira de duas portas': 200,
-        'Grelha elétrica': 1400,
-        'Lâmpada fluorescente': 20,
-        'Lâmpada incandescente': 60,
-        'Lâmpada LED': 1,
-        'Liquidificador': 500,
-        'Modem de Wi-Fi': 15,
-        'Televisão': 100,
-        'Ventilador': 50
-    };
 
     // Inicializa o array para armazenar a potência total de cada hora
-
+    const arrayDeAcrescimo = (await dadosEletrodomesticosEspeciais()).diaUtil
+    let contador = 0;
     querySnapshot.forEach((doc) => {
         const potenciaTotalPorHora = Array(24).fill(0);
         const dados_eletro = JSON.parse(doc.data().dados_eletro);
-        console.log(dados_eletro);
 
         // Itera sobre cada equipamento
         dados_eletro.forEach(equipamento => {
             const nomeEquipamento = equipamento.equipamento;
-            console.log(nomeEquipamento)
             const horas = equipamento.horas;
             const potenciaEquipamento = PotenciaMap[nomeEquipamento];
 
@@ -256,76 +230,98 @@ const dadosEletrodomesticos = async () => {
             horas.forEach((ligado, hora) => {
                 if (ligado) {
                     potenciaTotalPorHora[hora] += potenciaEquipamento;
+                    
                 }
+                potenciaTotalPorHora[hora] = potenciaTotalPorHora[hora] + arrayDeAcrescimo[contador]
+                
             });
         });
         datasets.push(potenciaTotalPorHora);
+        contador++;
     });
-
-    console.log('poderes do chat', datasets);
 
     return {
         datasets: datasets
     };
 }
+
+const dadosEletrodomesticosEspeciais = async () => {
+    const datasetsDiaUtil = [];
+    const datasetsFDS = [];
+    const querySnapshot = await db.collection(TABELA_CADASTROS).get();
+
+
+    querySnapshot.forEach((doc) => {
+        const dados_eletro_esp = JSON.parse(doc.data().dados_eletro_esp);
+
+        // Array para armazenar a potência total por hora para o documento atual
+        let potenciaTotalPorHora = 0;
+        let potenciaTotalPorHoraFDS = 0;
+        dados_eletro_esp.forEach(equipamento => {
+            const nomeEquipamento = equipamento.equipamento;
+            const quantidade = parseInt(equipamento.quantidade);
+            const tempo = parseInt(equipamento.tempo);
+            const potenciaEquipamento = PotenciaMap[nomeEquipamento];
+
+            // Calcula a potência média por hora para o equipamento nos dias de semana
+            const potenciaMediaPorHora = (potenciaEquipamento * quantidade * tempo) / (5 * 24);
+            potenciaTotalPorHora = potenciaTotalPorHora + potenciaMediaPorHora;
+           
+            // Calcula a potência média por hora para o equipamento nos FDS
+            const potenciaMediaPorHoraFDS = (potenciaEquipamento * quantidade * tempo) / (2 * 24);
+            potenciaTotalPorHoraFDS = potenciaTotalPorHoraFDS + potenciaMediaPorHora;
+        });
+
+        datasetsDiaUtil.push(potenciaTotalPorHora);
+        datasetsFDS.push(potenciaTotalPorHoraFDS);
+    });
+    return {
+        diaUtil: datasetsDiaUtil,//contém a quantidade de potencia pra adicionar  por hora para cada documento nos dias uteis
+        diaInutil:  datasetsFDS//contém a quantidade de potencia pra adicionar  por hora para cada documento no FDS
+    };
+};
+
 
 const dadosEletrodomesticosFDS = async () => {
     const datasets = [];
     
     const querySnapshot = await db.collection(TABELA_CADASTROS).get();
-    const PotenciaMap = {
-        'Air fryer': 1400,
-        'Ar-condicionado': 2000,
-        'Chapa': 1500,
-        'Chuveiro elétrico': 5500,
-        'Computador': 400,
-        'Consoles de videogame': 150,
-        'Forno elétrico': 1800,
-        'Freezer': 300,
-        'Geladeira de 1 porta': 120,
-        'Geladeira de duas portas': 200,
-        'Grelha elétrica': 1400,
-        'Lâmpada fluorescente': 20,
-        'Lâmpada incandescente': 60,
-        'Lâmpada LED': 1,
-        'Liquidificador': 500,
-        'Modem de Wi-Fi': 15,
-        'Televisão': 100,
-        'Ventilador': 50
-    };
+    
 
     // Inicializa o array para armazenar a potência total de cada hora
-
+    const arrayDeAcrescimo = (await dadosEletrodomesticosEspeciais()).diaInutil
+    let contador = 0;
     querySnapshot.forEach((doc) => {
         const potenciaTotalPorHora = Array(24).fill(0);
-        const dados_eletro_esp = JSON.parse(doc.data().dados_eletro_weekend);
-        console.log(dados_eletro_esp);
+        const dados_eletro_weekend = JSON.parse(doc.data().dados_eletro_weekend);
 
         // Itera sobre cada equipamento
-        dados_eletro_esp.forEach(equipamento => {
+        dados_eletro_weekend.forEach(equipamento => {
             const nomeEquipamento = equipamento.equipamento;
-            console.log(nomeEquipamento)
             const horas = equipamento.horas;
             const potenciaEquipamento = PotenciaMap[nomeEquipamento];
 
             // Adiciona a potência do equipamento para cada hora correspondente
             horas.forEach((ligado, hora) => {
                 if (ligado) {
-                    potenciaTotalPorHora[hora] += potenciaEquipamento;
+                    potenciaTotalPorHora[hora] = potenciaTotalPorHora[hora]  + potenciaEquipamento;
                 }
+                potenciaTotalPorHora[hora] = potenciaTotalPorHora[hora] + arrayDeAcrescimo[contador]
             });
+
         });
         datasets.push(potenciaTotalPorHora);
+        contador++;
     });
-
 
     return {
         datasets: datasets
     };
 }
 
-getBtn.addEventListener('click', dadosCidades);
 refreshBtn.addEventListener('click', async () => {
+
+    
     //Gráfico de cidades
     new Chart(graficoCidades, {
         type: 'bar',
@@ -360,7 +356,6 @@ refreshBtn.addEventListener('click', async () => {
             labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
             datasets: (await dadosHorariosDiasUteis()).pessoasEmCasa.map((item, index)=>{
                 const color = randomColor()
-                console.log(contatosNomes[index])
                 return {
                     label: contatosNomes[index] + " - Moradores",
                     data: item,
@@ -395,7 +390,6 @@ refreshBtn.addEventListener('click', async () => {
             labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
             datasets: (await dadosHorariosFeriadosFDS()).pessoasEmCasa.map((item, index)=>{
                 const color = randomColor()
-                console.log(contatosNomes[index])
                 return {
                     label: contatosNomes[index] + " - Moradores",
                     data: item,
@@ -516,10 +510,10 @@ refreshBtn.addEventListener('click', async () => {
         },
             scales: {
                 x: {
-                    stacked: true
+                    stacked: false
                 },
                 y: {
-                    stacked: true
+                    stacked: false
                 }
             }
         }
@@ -549,16 +543,16 @@ refreshBtn.addEventListener('click', async () => {
         },
             scales: {
                 x: {
-                    stacked: true
+                    stacked: false
                 },
                 y: {
-                    stacked: true
+                    stacked: false
                 }
             }
         }
     });
 })
 testeBtn.addEventListener('click', async () => {
-    //Por exemplo, quero pegar o retorno da função dadosCidades e fazer algo com ele, sem receber undefined
-    dadosEletrodomesticos()
+    //Botão para executar funções de teste
+    // const teste = (await dadosEletrodomesticosEspeciais()).diaUtil
  });
