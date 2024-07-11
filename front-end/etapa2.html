@@ -50,7 +50,7 @@
         <label for="nivel-B">Nível B</label><br>
     </div>
     <div class="nav">
-        <button onclick="window.location.href='etapa1.html'">Voltar</button>
+        <button onclick="window.location.href='etapa1.html'; salvarDados()">Voltar</button>
         <button onclick="verify()">Próximo</button>
         <input type="button" value="Salvar" class="save" onclick="salvarDados()">
     </div>
@@ -163,6 +163,26 @@
                     timer: 1500,
                     timerProgressBar: true,
                 });
+        }
+
+        function verify(){
+            const nivelA = document.getElementById('nivel-a').checked;
+            const nivelB = document.getElementById('nivel-b').checked;
+            const nivelC = document.getElementById('nivel-c').checked;
+            const nivelD = document.getElementById('nivel-d').checked;
+            const nivelA2 = document.getElementById('nivel-A').checked;
+            const nivelB2 = document.getElementById('nivel-B').checked;
+
+            if ((nivelA || nivelB || nivelC || nivelD) && (nivelA2 || nivelB2)){
+                window.location.href = 'etapa3.html'
+                salvarDados()
+            } else {
+                Swal.fire({
+                    title: 'Campos Incompletos',
+                    text: 'Por favor, preencha todos os campos.',
+                    icon: 'warning'
+                });
+            }
         }
 
         window.onload = carregarDados();
