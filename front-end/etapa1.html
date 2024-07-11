@@ -68,8 +68,8 @@
         <textarea name="contato" id="contato" rows="1"></textarea>
     </div>
     <div class="nav">
-        <button><a href="../index.html">Voltar</a></button>
-        <button onclick="salvarDados()"><a href="etapa2.html">Próximo</a></button>
+        <button onclick="window.location.href='../index.html'">Voltar</button>
+        <button onclick="verfify()" >Próximo</button>
         <input type="button" value="Salvar" class="save" onclick="salvarDados()">
     </div>
     <footer>
@@ -80,6 +80,7 @@
 
 <script>
     function salvarDados() {
+
         const cidade = document.getElementById('cidade').value;
         const subgrupo = document.getElementById('subgrupo').value;
         const nome = document.getElementById('nome').value;
@@ -131,7 +132,7 @@ function carregarDados() {
     Swal.fire({
                     toast: true,
                     position: 'top',
-                    icon: 'sucess',
+                    icon: 'success',
                     title: 'Continue de onde parou.',
                     text: 'Seu progresso foi salvo!',
                     showConfirmButton: true,
@@ -141,6 +142,28 @@ function carregarDados() {
 }
 
     window.onload = carregarDados;
+
+    function verfify(){
+        salvarDados()
+        
+        const cidade = JSON.parse(localStorage.getItem('dadosPessoais'))?.cidade;
+        const subgrupo = JSON.parse(localStorage.getItem('dadosPessoais'))?.subgrupo;
+        const nome = JSON.parse(localStorage.getItem('dadosPessoais'))?.nome;
+        const contato = JSON.parse(localStorage.getItem('dadosPessoais'))?.contato;
+        if (cidade && subgrupo && nome && contato){
+            window.location.href = 'etapa2.html'
+            salvarDados();
+
+        } else {
+            Swal.fire({
+                    title: 'Campos Incompletos',
+                    text: 'Por favor, preencha todos os campos.',
+                    icon: 'warning'
+                });
+        }
+        
+        console.log(cidade)
+    }
 </script>
 
 </html>
