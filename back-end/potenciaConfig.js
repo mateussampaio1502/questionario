@@ -17,6 +17,7 @@ export const PotenciaMap = {
     'Modem de Wi-Fi': 15,
     'Televisão': 100,
     'Ventilador': 50,
+    'Ventilador de teto': 75,
     'Carregador de celular': 5,
     'Carregador de notebook': 65,
     'Impressora': 80,
