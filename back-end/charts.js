@@ -1,4 +1,4 @@
-import { addDataBtn, TABELA_CADASTROS } from './consts.js'
+import { addDataBtn, graficoDadosEletroMedia, graficoDadosEletroMediaInuteis, TABELA_CADASTROS } from './consts.js'
 import {db} from '../back-end/firebase.js'
 import {PotenciaMap} from './potenciaConfig.js'
 import { graficoCidades,  
@@ -233,16 +233,34 @@ const dadosEletrodomesticos = async () => {
                     
                 }
                 potenciaTotalPorHora[hora] = potenciaTotalPorHora[hora] + arrayDeAcrescimo[contador]
-                
             });
         });
         datasets.push(potenciaTotalPorHora);
         contador++;
+        console.log(datasets)
     });
-
+    console.log(calculateAverages(datasets))
     return {
-        datasets: datasets
+        datasets: datasets,
+        AVGdatasets: calculateAverages(datasets)
     };
+}
+
+function calculateAverages(dataset) {
+    let n_items = dataset.length;
+    let sumArray = new Array(dataset[0].length).fill(0); // Inicializa a soma dos elementos em 0 com o tamanho correto
+
+    // Soma os elementos correspondentes dos sub-arrays
+    for (let i = 0; i < n_items; i++) {
+        for (let j = 0; j < dataset[i].length; j++) {
+            sumArray[j] += dataset[i][j];
+        }
+    }
+
+    // Calcula a média dividindo pelo número de itens
+    let avgArray = sumArray.map(sum => sum / n_items);
+
+    return avgArray;
 }
 
 const dadosEletrodomesticosEspeciais = async () => {
@@ -315,7 +333,8 @@ const dadosEletrodomesticosFDS = async () => {
     });
 
     return {
-        datasets: datasets
+        datasets: datasets,
+        AVGdatasets: calculateAverages(datasets)
     };
 }
 
@@ -518,6 +537,36 @@ refreshBtn.addEventListener('click', async () => {
             }
         }
     });
+    //Criando curva geral dias úteis
+    new Chart(graficoDadosEletroMedia, {
+        type: 'line',
+        data: {
+            labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+            datasets: [{
+                label: 'Média Total',
+                    data: (await dadosEletrodomesticos()).AVGdatasets,
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    borderWidth: 1
+            }] 
+        },
+        options: {
+            plugins: {
+            title: {
+                display: true,
+                text: 'Curva de carga total'
+            }
+        },
+            scales: {
+                x: {
+                    stacked: false
+                },
+                y: {
+                    stacked: false
+                }
+            }
+        }
+    });
     //Eletrodomésticos N DIAS ÚTEIS
     new Chart(graficoDadosEletroFDS, {
         type: 'line',
@@ -551,6 +600,36 @@ refreshBtn.addEventListener('click', async () => {
             }
         }
     });
+    //curva geral dias não uteis
+new Chart(graficoDadosEletroMediaInuteis, {
+    type: 'line',
+    data: {
+        labels: ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'],
+        datasets: [{
+            label: 'Média Total para dias não úteis',
+                data: (await dadosEletrodomesticosFDS()).AVGdatasets,
+                backgroundColor: 'red',
+                borderColor: 'red',
+                borderWidth: 1
+        }] 
+    },
+    options: {
+        plugins: {
+        title: {
+            display: true,
+            text: 'Curva de carga total para os dias não úteis'
+        }
+    },
+        scales: {
+            x: {
+                stacked: false
+            },
+            y: {
+                stacked: false
+            }
+        }
+    }
+});
 })
 testeBtn.addEventListener('click', async () => {
     //Botão para executar funções de teste
