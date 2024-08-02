@@ -164,6 +164,7 @@ const dadosEficiencia = async () => {
  
     const querySnapshot = await db.collection(TABELA_CADASTROS).get();
     querySnapshot.forEach((doc) => {
+        console.log(doc.data().dadosEficiencia)
         const niveis = JSON.parse(doc.data().dadosEficiencia);
         
         switch (niveis.nivelEficiencia) {
@@ -631,7 +632,8 @@ new Chart(graficoDadosEletroMediaInuteis, {
     }
 });
 })
-testeBtn.addEventListener('click', async () => {
-    //Botão para executar funções de teste
-    // const teste = (await dadosEletrodomesticosEspeciais()).diaUtil
- });
+// testeBtn.addEventListener('click', async () => {
+//     console.log('teste')
+//     //Botão para executar funções de teste
+//     // const teste = (await dadosEletrodomesticosEspeciais()).diaUtil
+//  });

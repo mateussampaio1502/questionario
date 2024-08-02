@@ -20,10 +20,14 @@ const addData = async () => {
      const querySnapshot = await db.collection(TABELA_CADASTROS).get();
 
      let docIdToUpdate = null;
- 
+    
      // Itera sobre os documentos para encontrar um com o mesmo contato
      querySnapshot.forEach((doc) => {
+        console.log('testeeeeeeee', typeof(doc.data().dadosPessoais))
+        console.log('conteúdo:', doc.data().dadosPessoais)
+        console.log('testeeeeeeee ', JSON.parse(doc.data().dadosPessoais))
          const dadosPessoaisDoc = JSON.parse(doc.data().dadosPessoais);
+         console.log(dadosPessoaisDoc)
          if (dadosPessoaisDoc.contato === contato) {
              docIdToUpdate = doc.id;
          }
