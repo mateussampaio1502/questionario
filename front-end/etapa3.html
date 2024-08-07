@@ -120,164 +120,187 @@
     <script>
         var c = 0;
 
-        function addmember(){
-            var tbody = document.getElementById("tbody_pessoas");
-            var newrow = tbody.insertRow();
-            c++;
-            var member = document.createElement("th");
-            member.textContent = `Membro ${c}`;
-            newrow.appendChild(member);
+function addmember() {
+    var tbody = document.getElementById("tbody_pessoas");
+    var newrow = tbody.insertRow();
+    c++;
+    var member = document.createElement("th");
+    member.textContent = `Membro ${c}`;
+    member.style.cursor = "pointer";
+    newrow.appendChild(member);
 
-            for (let i = 0; i < 24; i++){
-                let cell = newrow.insertCell();
-                let checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                checkbox.name = `membro${c}[${i}h]`;
-                checkbox.id = `${i}`;
-                cell.appendChild(checkbox);
-            }
-        }
+    for (let i = 0; i < 24; i++) {
+        let cell = newrow.insertCell();
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = `membro${c}[${i}h]`;
+        checkbox.id = `${i}`;
+        cell.appendChild(checkbox);
+    }
 
-        function removemember(){
-            var tbody = document.getElementById("tbody_pessoas");
-            var length = tbody.rows.length;
+    member.onclick = function() {
+        toggleCheckboxes(newrow);
+    };
+}
 
-            if (length > 1) {
-                tbody.deleteRow(length - 1);
-                c--;
-            } else {
-                Swal.fire({
-                    toast: true,
-                    position: 'top',
-                    icon: 'error',
-                    title: 'Operação inválida!',
-                    text: 'Não há membros para remover!',
-                    showConfirmButton: true,
-                    timer: 3000,
-                    timerProgressBar: true,
-                });
-            }
-        }
+function removemember() {
+    var tbody = document.getElementById("tbody_pessoas");
+    var length = tbody.rows.length;
 
-        var c_fds = 0;
-
-        function addmember_fds(){
-            var tbody = document.getElementById("tbody_pessoas_fds");
-            var newrow = tbody.insertRow();
-            c_fds++;
-            var member = document.createElement("th");
-            member.textContent = `Membro ${c_fds}`;
-            newrow.appendChild(member);
-
-            for (let i = 0; i < 24; i++){
-                let cell = newrow.insertCell();
-                let checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                checkbox.name = `membro${c_fds}_fds[${i}h]`;
-                checkbox.id = `${i}`;
-                cell.appendChild(checkbox);
-            }
-        }
-
-        function removemember_fds(){
-            var tbody = document.getElementById("tbody_pessoas_fds");
-            var length = tbody.rows.length;
-
-            if (length > 1) {
-                tbody.deleteRow(length - 1);
-                c_fds--;
-            } else {
-                Swal.fire({
-                    toast: true,
-                    position: 'top',
-                    icon: 'error',
-                    title: 'Operação inválida!',
-                    text: 'Não há membros para remover!',
-                    showConfirmButton: true,
-                    timer: 3000,
-                    timerProgressBar: true,
-                });
-            }
-        }
-
-        function saveData(tbodyId, keyPrefix) {
-            var tbody = document.getElementById(tbodyId);
-            var data = [];
-
-            for (var i = 1; i < tbody.rows.length; i++) {
-                var row = tbody.rows[i];
-                var rowData = {};
-                for (var j = 0; j < row.cells.length; j++) {
-                    var cell = row.cells[j];
-                    var checkbox = cell.querySelector('input[type="checkbox"]');
-                    if (checkbox) {
-                        rowData[checkbox.id] = checkbox.checked;
-                    }
-                }
-                data.push(rowData);
-            }
-            Swal.fire({
-                    toast: true,
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Operação bem sucedida!',
-                    text: 'Dados salvos com sucesso!',
-                    showConfirmButton: false,
-                    timer: 3000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-            localStorage.setItem(keyPrefix, JSON.stringify(data));
-        }
-
-        function loadData(tbodyId, keyPrefix) {
-            var data = JSON.parse(localStorage.getItem(keyPrefix));
-            if (!data) return;
-
-            var tbody = document.getElementById(tbodyId);
-            for (var i = 0; i < data.length; i++) {
-                var row = tbody.insertRow();
-                var rowData = data[i];
-                var member = document.createElement("th");
-                member.textContent = `Membro ${i + 1}`;
-                row.appendChild(member);
-
-                for (var key in rowData) {
-                    let cell = row.insertCell();
-                    let checkbox = document.createElement("input");
-                    checkbox.type = "checkbox";
-                    checkbox.id = key;
-                    checkbox.checked = rowData[key];
-                    cell.appendChild(checkbox);
-                }
-            }
-            Swal.fire({
-                    toast: true,
-                    position: 'top',
-                    icon: 'success',
-                    title: 'Continue de onde parou.',
-                    text: 'Seu progresso foi salvo!',
-                    showConfirmButton: true,
-                    timer: 1500,
-                    timerProgressBar: true,
-                });
-        }
-
-        window.onload = function () {
-            loadData('tbody_pessoas', 'horariosDiasUteis');
-            loadData('tbody_pessoas_fds', 'horariosFeriadosFDS');
-        };
-
-        document.getElementById('savebutton').addEventListener('click', function () {
-            saveData('tbody_pessoas', 'horariosDiasUteis');
+    if (length > 1) {
+        tbody.deleteRow(length - 1);
+        c--;
+    } else {
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: 'error',
+            title: 'Operação inválida!',
+            text: 'Não há membros para remover!',
+            showConfirmButton: true,
+            timer: 3000,
+            timerProgressBar: true,
         });
+    }
+}
 
-        document.getElementById('savebutton_fds').addEventListener('click', function () {
-            saveData('tbody_pessoas_fds', 'horariosFeriadosFDS');
+var c_fds = 0;
+
+function addmember_fds() {
+    var tbody = document.getElementById("tbody_pessoas_fds");
+    var newrow = tbody.insertRow();
+    c_fds++;
+    var member = document.createElement("th");
+    member.textContent = `Membro ${c_fds}`;
+    member.style.cursor = "pointer";
+    newrow.appendChild(member);
+
+    for (let i = 0; i < 24; i++) {
+        let cell = newrow.insertCell();
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = `membro${c_fds}_fds[${i}h]`;
+        checkbox.id = `${i}`;
+        cell.appendChild(checkbox);
+    }
+
+    member.onclick = function() {
+        toggleCheckboxes(newrow);
+    };
+}
+
+function removemember_fds() {
+    var tbody = document.getElementById("tbody_pessoas_fds");
+    var length = tbody.rows.length;
+
+    if (length > 1) {
+        tbody.deleteRow(length - 1);
+        c_fds--;
+    } else {
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: 'error',
+            title: 'Operação inválida!',
+            text: 'Não há membros para remover!',
+            showConfirmButton: true,
+            timer: 3000,
+            timerProgressBar: true,
         });
+    }
+}
+
+function toggleCheckboxes(row) {
+    let checkboxes = row.querySelectorAll('input[type="checkbox"]');
+    let allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+    checkboxes.forEach(checkbox => checkbox.checked = !allChecked);
+}
+
+function saveData(tbodyId, keyPrefix) {
+    var tbody = document.getElementById(tbodyId);
+    var data = [];
+
+    for (var i = 1; i < tbody.rows.length; i++) {
+        var row = tbody.rows[i];
+        var rowData = {};
+        for (var j = 0; j < row.cells.length; j++) {
+            var cell = row.cells[j];
+            var checkbox = cell.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                rowData[checkbox.id] = checkbox.checked;
+            }
+        }
+        data.push(rowData);
+    }
+    Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'Operação bem sucedida!',
+        text: 'Dados salvos com sucesso!',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+    localStorage.setItem(keyPrefix, JSON.stringify(data));
+}
+
+function loadData(tbodyId, keyPrefix) {
+    var data = JSON.parse(localStorage.getItem(keyPrefix));
+    if (!data) return;
+
+    var tbody = document.getElementById(tbodyId);
+    for (var i = 0; i < data.length; i++) {
+        var row = tbody.insertRow();
+        var rowData = data[i];
+        var member = document.createElement("th");
+        member.textContent = `Membro ${i + 1}`;
+        member.style.cursor = "pointer";
+        row.appendChild(member);
+
+        for (var key in rowData) {
+            let cell = row.insertCell();
+            let checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = key;
+            checkbox.checked = rowData[key];
+            cell.appendChild(checkbox);
+        }
+
+        member.onclick = (function(r) {
+            return function() {
+                toggleCheckboxes(r);
+            };
+        })(row);
+    }
+    Swal.fire({
+        toast: true,
+        position: 'top',
+        icon: 'success',
+        title: 'Continue de onde parou.',
+        text: 'Seu progresso foi salvo!',
+        showConfirmButton: true,
+        timer: 1500,
+        timerProgressBar: true,
+    });
+}
+
+window.onload = function () {
+    loadData('tbody_pessoas', 'horariosDiasUteis');
+    loadData('tbody_pessoas_fds', 'horariosFeriadosFDS');
+};
+
+document.getElementById('savebutton').addEventListener('click', function () {
+    saveData('tbody_pessoas', 'horariosDiasUteis');
+});
+
+document.getElementById('savebutton_fds').addEventListener('click', function () {
+    saveData('tbody_pessoas_fds', 'horariosFeriadosFDS');
+});
 
     </script>
 </body>
