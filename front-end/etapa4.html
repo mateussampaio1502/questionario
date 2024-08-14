@@ -30,6 +30,7 @@
     </div>
     <div class="campo">
         <p>Informe a faixa de utilização para os seguintes equipamentos <strong>em um dia útil comum</strong>:</p>
+        <p class="destaque">Clique no eletrodoméstico para marcar/desmarcar todos</p>
         <div class="table">
             <table>
                 <thead>
@@ -88,6 +89,7 @@
     </div>
     <div class="campo">
         <p>Informe a faixa de utilização para os seguintes equipamentos <strong>em um fim de semana comum</strong>:</p>
+        <p class="destaque">Clique no eletrodoméstico para marcar/desmarcar todos</p>
         <div class="table">
             <table>
                 <thead>
@@ -156,8 +158,8 @@
                 <thead>
                     <tr>
                         <th>Eletrodoméstico</th>
-                        <th>Quantidade</th>
-                        <th>Tempo de uso</th>
+                        <th>Quantidade de eletrodomésticos</th>
+                        <th>Tempo de uso semanal</th>
                     </tr>
                 </thead>
                 <tbody id="tbody_eletro_esp">
@@ -195,7 +197,7 @@
 
     <div class="nav">
         <button onclick="window.location.href='etapa3.html'; salvarDadosEletro(); salvarDadosEletroWeekend(); salvarDadosEletroEsp()">Voltar</button>
-        <button id="addDataBtn">Enviar</button>
+        <button id="addDataBtn" onclick="window.location.href='etapa5.html'">Enviar</button>
     </div>
     <footer>
         <p>Mateus Sampaio &reg;</p>

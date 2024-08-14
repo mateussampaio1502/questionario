@@ -45,6 +45,11 @@ div.campo p {
     line-height: 1.2em;
 }
 
+.destaque {
+    color: var(--cor-texto-secundario);
+    font-weight: bold;
+}
+
 div.campo .tempo-de-uso, .falhas-mec, .falhas-elet, .man-periodo {
     cursor: pointer;
     color: var(--cor-destaque);
