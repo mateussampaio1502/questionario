@@ -29,7 +29,7 @@
         <p id="obg">* Indica uma pergunta obrigatória</p>
     </div>
     <div class="campo">
-        <p>Informe a faixa de utilização para os seguintes equipamentos <strong>em um dia útil comum</strong>:</p>
+        <p class="required">Informe a faixa de utilização para os seguintes equipamentos <strong>em um dia útil comum</strong>:</p>
         <p class="destaque">Clique no eletrodoméstico para marcar/desmarcar todos</p>
         <div class="table">
             <table>
@@ -64,7 +64,12 @@
                     <td>
                         <select name="eletro" id="eletro" class="eletro">
                             <option value="" selected disabled>Selecione uma opção</option>
-                            <option value="Ar-condicionado">Ar-condicionado</option>
+                            <option value="Ar-condicionado 9000 BTUS">Ar-condicionado 9000 BTUS</option>
+                            <option value="Ar-condicionado 10000 BTUS">Ar-condicionado 10000 BTUS</option>
+                            <option value="Ar-condicionado 12000 BTUS">Ar-condicionado 12000 BTUS</option>
+                            <option value="Ar-condicionado 18000 BTUS">Ar-condicionado 18000 BTUS</option>
+                            <option value="Ar-condicionado 21000 BTUS">Ar-condicionado 21000 BTUS</option>
+                            <option value="Ar-condicionado 30000 BTUS">Ar-condicionado 30000 BTUS</option>
                             <option value="Computador">Computador</option>
                             <option value="Consoles de videogame">Consoles de videogame</option>
                             <option value="Freezer">Freezer</option>
@@ -88,7 +93,7 @@
         <button class="add_remove" id="savebutton" onclick="salvarDadosEletro()">Salvar</button>
     </div>
     <div class="campo">
-        <p>Informe a faixa de utilização para os seguintes equipamentos <strong>em um fim de semana comum</strong>:</p>
+        <p class="required">Informe a faixa de utilização para os seguintes equipamentos <strong>em um fim de semana comum</strong>:</p>
         <p class="destaque">Clique no eletrodoméstico para marcar/desmarcar todos</p>
         <div class="table">
             <table>
@@ -126,19 +131,24 @@
                         <td>
                             <select name="eletro_weekend" id="eletro_weekend" class="eletro">
                                 <option value="" selected disabled>Selecione uma opção</option>
-                                <option value="Ar-condicionado">Ar-condicionado</option>
-                                <option value="Computador">Computador</option>
-                                <option value="Consoles de videogame">Consoles de videogame</option>
-                                <option value="Freezer">Freezer</option>
-                                <option value="Geladeira de 1 porta">Geladeira de 1 porta</option>
-                                <option value="Geladeira de duas portas">Geladeira de duas portas</option>
-                                <option value="Lâmpada fluorescente">Lâmpada fluorescente</option>
-                                <option value="Lâmpada incandescente">Lâmpada incandescente</option>
-                                <option value="Lâmpada LED">Lâmpada LED</option>
-                                <option value="Modem de Wi-Fi">Modem de Wi-Fi</option>
-                                <option value="Televisão">Televisão</option>
-                                <option value="Ventilador">Ventilador</option>
-                                <option value="Ventilador de teto">Ventilador de teto</option>
+                            <option value="Ar-condicionado 9000 BTUS">Ar-condicionado 9000 BTUS</option>
+                            <option value="Ar-condicionado 10000 BTUS">Ar-condicionado 10000 BTUS</option>
+                            <option value="Ar-condicionado 12000 BTUS">Ar-condicionado 12000 BTUS</option>
+                            <option value="Ar-condicionado 18000 BTUS">Ar-condicionado 18000 BTUS</option>
+                            <option value="Ar-condicionado 21000 BTUS">Ar-condicionado 21000 BTUS</option>
+                            <option value="Ar-condicionado 30000 BTUS">Ar-condicionado 30000 BTUS</option>
+                            <option value="Computador">Computador</option>
+                            <option value="Consoles de videogame">Consoles de videogame</option>
+                            <option value="Freezer">Freezer</option>
+                            <option value="Geladeira de 1 porta">Geladeira de 1 porta</option>
+                            <option value="Geladeira de duas portas">Geladeira de 2 portas</option>
+                            <option value="Lâmpada fluorescente">Lâmpada fluorescente</option>
+                            <option value="Lâmpada incandescente">Lâmpada incandescente</option>
+                            <option value="Lâmpada LED">Lâmpada LED</option>
+                            <option value="Modem de Wi-Fi">Modem de Wi-Fi</option>
+                            <option value="Televisão">Televisão</option>
+                            <option value="Ventilador">Ventilador</option>
+                            <option value="Ventilador de teto">Ventilador de teto</option>
                             </select>
                         </td>
                         <td class="firstline" colspan="24">Clique no botão para adicionar equipamentos</td>
@@ -168,6 +178,7 @@
                             <select name="eletro_esp" id="eletro_esp" class="eletro">
                                 <option value="" selected disabled>Selecione uma opção</option>
                                 <option value="Air fryer">Air fryer</option>
+                                <option value="Aspirador de po">Aspirador de pó</option>
                                 <option value="Carregador de celular">Carregador de celular</option>
                                 <option value="Carregador de notebook">Carregador de notebook</option>
                                 <option value="Chapa">Chapa</option>
@@ -176,6 +187,7 @@
                                 <option value="Grelha elétrica">Grelha elétrica</option>
                                 <option value="Impressora">Impressora</option>
                                 <option value="Liquidificador">Liquidificador</option>
+                                <option value="Microondas">Microondas</option>
                                 <option value="Modelador de cabelo">Modelador de cabelo</option>
                                 <option value="Secador de cabelo">Secador de cabelo</option>
                             </select>
