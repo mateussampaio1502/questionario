@@ -11,6 +11,7 @@ export const PotenciaMap = {
     'Chuveiro elétrico': 5500,
     'Computador': 250,
     'Consoles de videogame': 125,
+    'Ferro': 550,
     'Forno elétrico': 1800,
     'Freezer': 280,
     'Geladeira de 1 porta': 190,
