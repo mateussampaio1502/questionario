@@ -60,6 +60,7 @@ const addData = async () => {
              dados_eletro_esp: dados_eletro_esp
          }).then(() => {
              console.log("Documento adicionado com sucesso!");
+             window.location.href='etapa5.html'
          }).catch((error) => {
              console.error("Erro ao adicionar documento: ", error);
          });
