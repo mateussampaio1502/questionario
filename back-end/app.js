@@ -18,7 +18,7 @@ const addData = async () => {
     const contato = JSON.parse(dadosPessoais).contato;
      // Consulta para obter todos os documentos
      const querySnapshot = await db.collection(TABELA_CADASTROS).get();
-
+    console.log('1  ' + querySnapshot)
      let docIdToUpdate = null;
     
      // Itera sobre os documentos para encontrar um com o mesmo contato
