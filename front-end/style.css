@@ -2,14 +2,14 @@
 
 
 :root {
-    --cor-fundo: #a8aad8;
-    --cor-perguntas: #FFFFFF;
-    --cor-destaque: #4E148C;
-    --cor-texto:  #000000;
-    --cor-texto-secundario: #4E148C; 
-    --cor-feedback-erro: #FA8072;
+    --cor-fundo: #FFFFFF;
+    --cor-perguntas: #F0F4EF;
+    --cor-destaque: #020887;
+    --cor-texto:  #334195;
+    --cor-texto-secundario: #020887; 
+    --cor-feedback-erro: #ff1900;
     --cor-feedback-positivo: #613DC1;
-    --cor-campo-ativo: #858AE3;
+    --cor-campo-ativo: #7692FF;
   }  
       
 
