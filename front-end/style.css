@@ -31,14 +31,14 @@ header {
 
 div.campo {
     width: 80vw;
-    margin: auto;
-    margin-top: 10px;
+    margin: 10px auto 0;
     padding: 5px;
     border-radius: 10px;
     background-color: var(--cor-perguntas);
     color: var(--cor-texto);
     text-align: justify;
 }
+
 
 div.campo p {
     padding: 5px;
