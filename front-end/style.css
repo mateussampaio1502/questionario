@@ -21,7 +21,31 @@
 
 body {
     background-color: var(--cor-fundo);
+    position: relative;
 }
+
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 180px;
+    height: 180px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+body::before {
+    left: 100px;
+    background-image: url('imagens/logo-ufrb.png');
+}
+
+body::after {
+    right: 100px;
+    background-image: url('imagens/logo-cetec.png');
+}
+
 
 header {
     padding: 10px;
