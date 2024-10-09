@@ -64,7 +64,7 @@
                 </thead>
                 <tbody id="tbody_eletro">
                     <td>
-                        <select name="eletro" id="eletro" class="eletro">
+                        <select name="eletro" onchange="addEletro()" id="eletro" class="eletro">
                             <option value="" selected disabled>Selecione uma opção</option>
                             <option value="Ar-condicionado 9000 BTUS">Ar-condicionado 9000 BTUS</option>
                             <option value="Ar-condicionado 10000 BTUS">Ar-condicionado 10000 BTUS</option>
@@ -131,7 +131,7 @@
                 <tbody id="tbody_eletro_weekend">
                     <tr>
                         <td>
-                            <select name="eletro_weekend" id="eletro_weekend" class="eletro">
+                            <select name="eletro_weekend" onchange="addEletro_weekend()" id="eletro_weekend" class="eletro">
                                 <option value="" selected disabled>Selecione uma opção</option>
                             <option value="Ar-condicionado 9000 BTUS">Ar-condicionado 9000 BTUS</option>
                             <option value="Ar-condicionado 10000 BTUS">Ar-condicionado 10000 BTUS</option>
@@ -452,7 +452,10 @@
                 data_esp.push({ equipamento: equipamento, quantidade: quantidade, tempo: tempo });
             }
             localStorage.setItem("dados_eletro_esp", JSON.stringify(data_esp));
-            Swal.fire({
+            let isEmpty = JSON.parse(localStorage.getItem("dados_eletro_esp")).length < 1
+
+            if(!isEmpty){
+                Swal.fire({
                     toast: true,
                     position: 'top',
                     icon: 'success',
@@ -462,6 +465,19 @@
                     timer: 3000,
                     timerProgressBar: true,
                 });
+            }else{
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    icon: 'error',
+                    title: 'Operação bem sucedida!',
+                    text: 'Selecione uma opção e CLIQUE em ADICIONAR eletrônico!',
+                    showConfirmButton: true,
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
+            }
+
         }
 
 

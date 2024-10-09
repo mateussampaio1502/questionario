@@ -294,6 +294,7 @@ const dadosEletrodomesticosEspeciais = async () => {
         datasetsDiaUtil.push(potenciaTotalPorHora);
         datasetsFDS.push(potenciaTotalPorHoraFDS);
     });
+    console.log("Array do dia util ", datasetsDiaUtil)
     return {
         diaUtil: datasetsDiaUtil,//contém a quantidade de potencia pra adicionar  por hora para cada documento nos dias uteis
         diaInutil:  datasetsFDS//contém a quantidade de potencia pra adicionar  por hora para cada documento no FDS
