@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
     <title>Formulário</title>
@@ -13,6 +14,9 @@
     <!--Particles.js connection-->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
+    <!-- QRCode.js connection -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
     <style>
         #particles-js {
             position: fixed;
@@ -22,6 +26,12 @@
             left: 0;
             pointer-events: none;
             z-index: 1000;
+        }
+
+        #qrcode {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
@@ -36,8 +46,7 @@
         <p>Muito obrigado a todos!</p>
     </div>
     <div class="nav">
-        
-    </div>
+        <button id="mainShare">Compartilhe!</button>
     <footer>
         <p>Mateus Sampaio &reg;</p>
     </footer>
@@ -134,5 +143,44 @@ function confettiEffect() {
         }
     }, 3000);
 }
+
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('Particles.js carregado');
+        });
+
+        document.getElementById('mainShare').addEventListener('click', function() {
+            Swal.fire({
+                title: 'Compartilhe!',
+                html: `
+                    <div id="qrcode"></div>
+                    <button id="shareBtn" class="swal2-confirm swal2-styled">Compartilhar</button>
+                `,
+                didOpen: () => {
+                    new QRCode(document.getElementById("qrcode"), {
+                        text: "https://questionario-ufrb.netlify.app/index.html",
+                        width: 128,
+                        height: 128,
+                    });
+
+                    document.getElementById('shareBtn').addEventListener('click', function() {
+                        if (navigator.share) {
+                            navigator.share({
+                                title: 'Questionário',
+                                text: 'Confira o questionário finalizado!',
+                                url: 'https://questionario-ufrb.netlify.app/index.html'
+                            }).then(() => {
+                                console.log('Compartilhamento realizado com sucesso');
+                            }).catch((error) => {
+                                console.log('Erro no compartilhamento:', error);
+                            });
+                        } else {
+                            Swal.fire('Erro', 'Este navegador não suporta compartilhamento nativo.', 'error');
+                        }
+                    });
+                },
+                showCancelButton: false,
+                showConfirmButton: false
+            });
+        });
 </script>
 </html>
