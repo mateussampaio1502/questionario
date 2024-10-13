@@ -15,7 +15,7 @@ export const PotenciaMap = {
     'Forno elétrico': 1800,
     'Freezer': 280,
     'Geladeira de 1 porta': 190,
-    'Geladeira de duas portas': 380,
+    'Geladeira de 2 portas': 380,
     'Grelha elétrica': 1400,
     'Lâmpada fluorescente': 15,
     'Lâmpada incandescente': 70,
